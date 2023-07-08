@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import {Routes, Route, Outlet} from 'react-router-dom';
-import {Create, Home, Login, Post} from './pages';
+import {Create, Home, Login, Post, Register} from './pages';
 
 function App() {
    return (
-      <>
+      <div className='app'>
          <Routes>
             <Route
                path='/'
@@ -13,16 +13,21 @@ function App() {
             <Route
                path='/post/:id'
                element={<Post />}
-            />     
-               <Route
+            />
+            <Route
                path='/create'
                element={<Create />}
-            />    <Route
+            />{' '}
+            <Route
                path='/login'
                element={<Login />}
+            />{' '}
+            <Route
+               path='/register'
+               element={<Register />}
             />
          </Routes>
-      </>
+      </div>
    );
 }
 
