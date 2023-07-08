@@ -1,0 +1,65 @@
+@import '../../styles/mixins.scss';
+
+.login-page-container {
+   @include flexCenter();
+
+   height: 100vh;
+   width: 100%;
+   position: relative;
+   gap: 4rem;
+   position: relative;
+
+   .form-container {
+		background-color: var(--cardColor);
+		border-radius: 1rem;
+		padding: 2rem 1rem;
+
+		.login-form{
+			@include flexCenter();
+			flex-direction: column;
+			gap: 1rem;
+			>.input{
+				width: 100%;
+			}
+
+			>div{
+				@include flexCenter()	;
+				gap: 1rem;
+			}
+
+			h3{
+				margin: .3rem 0 1.3rem 0;
+			}
+
+			span{
+				font-size: 0.9rem;
+				margin: .5rem 0 0 0;
+			}
+
+			.input{
+				border: none;
+				outline: none;
+				background-color: var(--inputColor);
+				border-radius: 8px;
+				padding: .6rem;
+				flex:1;
+			}
+
+			.form-btn{
+				padding: .5rem 1rem;
+				width: 100%;
+			}
+
+		
+			.login-link{
+				color: var(--accent-text);
+				font-weight: 500;
+				margin: 0 0 0 .5rem;
+				cursor: pointer;
+
+
+			}
+
+		}
+	}
+}
