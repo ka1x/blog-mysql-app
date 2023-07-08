@@ -1,7 +1,8 @@
 import React from 'react';
-import {Footer, Navbar} from '../components/';
-import {posts} from '../data/index.js';
+import {Footer, Navbar} from '../../components';
+import {posts} from '../../data/index.js';
 import {Link} from 'react-router-dom';
+import './home.scss'
 
 const Home = () => {
    return (
@@ -15,13 +16,16 @@ const Home = () => {
                      key={i}>
                      <div className='img'>
                         <img
-                           src={`../upload/${post.img}`}
+                           // src={`../upload/${post.img}`}
+                           src={post.img}
                            alt=''
                         />
                      </div>
                      <div className='content'>
+                        <div className="line"></div>
+                        <p> June 21 2023</p>
                         <h1>{post.title}</h1>
-                        <p>{post.desc}</p>
+                        {/* <p>{post.desc}</p> */}
                         <Link
                            className='link'
                            to={`/post/${post.id}`}>

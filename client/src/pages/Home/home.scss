@@ -1,0 +1,16 @@
+@import '../../styles/mixins.scss';
+
+.home-container{
+	@include flexCenter();
+
+
+	
+		img{
+
+		object-fit: cover;
+		height: 400px;
+		width: auto;
+	}
+	
+
+}

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap');
 
 :root {
-   --background-col: #fff;
-   --main-col: #000;
-   --accent-col: #eeeeee;
+   --background-col: #e1e1e1;
+   --main-col: #1b1b1b;
+   --accent-col: #919191;
 }
 
 * {
@@ -32,4 +32,6 @@ a:focus {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
+   background: var(--background-col);
+   color: var(--main-col);
 }
