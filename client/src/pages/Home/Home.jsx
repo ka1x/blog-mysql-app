@@ -24,7 +24,7 @@ const Home = () => {
                      <div className='content'>
                         <div className="line"></div>
                         <p> June 21 2023</p>
-                        <h1>{post.title}</h1>
+                        <h3>{post.title}</h3>
                         {/* <p>{post.desc}</p> */}
                         <Link
                            className='link'

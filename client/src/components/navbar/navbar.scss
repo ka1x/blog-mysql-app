@@ -1,11 +1,25 @@
 @import '../../styles/mixins.scss';
 
 .navbar {
-   @include flexCenter();
 
-	
-   border-bottom: 1px solid black;
    
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+	
+   border-bottom: 1px solid var(--accent-col);
+   padding: 1.5rem 7rem;
+   font-size: .8rem;
+   font-weight: 600;
+    letter-spacing: 1px;
+
+   .logo{
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 10px
+   }
+
+
    .navbar-right {
       @include flexCenter();
       gap: 2rem;

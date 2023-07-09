@@ -16,7 +16,7 @@ const Navbar = () => {
                   <Link
                      key={i}
                      to={`/?cat=${item.linkname}`}
-                     style={{textTransform: 'uppercase'}}>
+                     style={{textTransform: 'capitalize'}}>
                      {' '}
                      {item.title}{' '}
                   </Link>
