@@ -2,31 +2,151 @@
 
 .home-container {
    @include flexCenter();
-	padding: 3rem 7rem;
+   padding: 3rem 7rem;
    .home-posts {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(2, 1fr);
-		position: relative;
+      position: relative;
+      gap: 2rem;
 
-		.post:nth-of-type(1){
-			grid-column: 1/3;
-			grid-row: 1/3;
-			height: 100%;
-			display: flex;
-			justify-content: flex-start;
+      .post:nth-of-type(1) {
+         grid-column: 1/3;
+         grid-row: 1/3;
+         height: 100%;
+         display: flex;
+         justify-content: flex-start;
 
-			flex-direction: column;
-			img {				
-				object-fit: cover;
-			 }
-			 
-		}
+         flex-direction: column;
+         img {
+            object-fit: cover;
+         }
 
-      img {
-         object-fit: cover;
-         height: 200px;
-         width: 200px;
+         .content {
+            h3 {
+               margin: 1rem 0 0 0;
+               font-size: 2rem;
+               font-weight: 300;
+            }
+            .desc {
+               margin: 0.5rem 0;
+               display: block;
+               font-size: 0.8rem;
+            }
+
+            .user {
+               height: 30%;
+               position: relative;
+               display: flex;
+               justify-content: space-between;
+               flex-direction: row;
+               align-items: center;
+               > div {
+                  display: flex;
+                  justify-content: space-between;
+                  flex-direction: row;
+                  align-items: center;
+                  gap: 1rem;
+               }
+
+               .user-pfp {
+                  position: relative;
+                  height: 100%;
+
+                  img {
+                     display: block;
+                     width: 40px;
+                     height: 40px;
+                     position: relative;
+                     object-fit: cover;
+                     border-radius: 50%;
+                  }
+               }
+
+               .share {
+                  display: block;
+                  @include flexCenter();
+                  position: relative;
+                  gap: 0.8rem;
+                  span {
+                     font-size: 0.7rem;
+                     text-transform: uppercase;
+                  }
+                  .line {
+                     height: 100%;
+                     border: 1px solid black;
+                  }
+               }
+
+               .name-container {
+						p{
+							font-size: .8rem;
+							margin: unset;
+						}
+                  .date {
+                     font-size: 0.8rem;
+                     text-transform: uppercase;
+                     font-family: 'Poppins', sans-serif;
+                     font-weight: 300;
+                     color: var(--darktext-col);
+                     display: block;
+                  }
+               }
+            }
+         }
+      }
+
+      .img {
+         position: relative;
+         width: 100%;
+         padding-bottom: 100%; /* Creates a square aspect ratio based on width */
+         img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+         }
+      }
+
+      .post {
+         .content {
+            h3 {
+               font-family: 'Bacasime Antique', serif;
+               font-size: 1.3rem;
+               letter-spacing: 0.2px;
+               font-weight: 500;
+            }
+            .desc {
+               display: none;
+            }
+
+            .user {
+               img {
+                  display: none;
+               }
+               p {
+                  font-size: 0.8rem;
+                  font-weight: 600;
+                  letter-spacing: 1px;
+               }
+
+               .share {
+                  display: none;
+               }
+               .name-container {
+
+						p{
+							
+						text-transform: uppercase;
+						font-size: .6rem;
+						margin: 1rem 0 0 0;
+						}
+                  .date {
+                     display: none;
+                  }
+               }
+            }
+         }
       }
    }
 }

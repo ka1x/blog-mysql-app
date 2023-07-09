@@ -1,32 +1,36 @@
 @import '../../styles/mixins.scss';
 
 .navbar {
-
-   
    display: flex;
-   align-items: center;
-   justify-content: space-between;
-	
-   border-bottom: 1px solid var(--accent-col);
-   padding: 1.5rem 7rem;
-   font-size: .8rem;
-   font-weight: 600;
-    letter-spacing: 1px;
+   flex-direction: column;
+   width: 100%;
 
-   .logo{
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: 10px
-   }
+   .navbar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
 
+      border-bottom: 1px solid var(--accent-col);
+      padding: 1.5rem 7rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
 
-   .navbar-right {
-      @include flexCenter();
-      gap: 2rem;
+      .logo {
+         font-size: 1.2rem;
+         font-weight: 800;
+         letter-spacing: 10px;
+      }
 
-      .navbar-links {
+      .navbar-right {
          @include flexCenter();
-         gap: 1rem;
+         gap: 2rem;
+
+         .navbar-links {
+            @include flexCenter();
+            gap: 1rem;
+         }
       }
    }
 }

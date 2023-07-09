@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
    --background-col: #fefefe;
    --main-col: #1b1b1b;
    --accent-col: #e4e4e4;
+   --lightbg-col: #f8f8f8;
+   --lighttext-col: #bdbdbd;
+   --darktext-col: #545454;
 }
 
 * {
