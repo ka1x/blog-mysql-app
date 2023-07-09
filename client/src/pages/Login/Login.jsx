@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import './login.scss';
-import {Link} from 'react-router-dom';
-
+import axios from 'axios';
+import {Link, useNavigate} from 'react-router-dom';
+import {AuthContext} from '../../context/AuthContext';
 const Login = () => {
    //states//
    const [inputs, setInputs] = useState({
@@ -9,10 +10,25 @@ const Login = () => {
       password: '',
    });
    const [err, setError] = useState(null);
+   const navigate = useNavigate();
+
+   //context//
+   const {login} = useContext(AuthContext);
+   const {currentUser} = useContext(AuthContext);
+   console.log(currentUser)
 
    //event handlers//
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
+
+      try {
+         await login(inputs);
+
+         navigate('/');
+         localStorage.setItem('access_token', res.data);
+      } catch (error) {
+         setError(error.response.data);
+      }
    };
 
    const handleChange = (e) => {
@@ -55,7 +71,7 @@ const Login = () => {
                         type='submit'
                         className='button form-btn'
                         value={'Login'}></input>
-                     {err && <p>{err}</p>}
+                     {err && <p className='error'>{err}</p>}
                   </form>
                </>
             </div>

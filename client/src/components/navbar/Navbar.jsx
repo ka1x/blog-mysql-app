@@ -10,15 +10,14 @@ const Navbar = () => {
          <nav className='navbar'>
             <SubscribeBar />
             <div className='navbar-content'>
-               <div className='logo'>
-                  <Link
-                     className='logo-link'
-                     to={'/'}>
-                     BLOG
-                  </Link>
-               </div>
-
-               <div className='navbar-right'>
+               <div className='navbar-left'>
+                  <div className='logo'>
+                     <Link
+                        className='logo-link'
+                        to={'/'}>
+                        BLOG
+                     </Link>
+                  </div>{' '}
                   <div className='navbar-links'>
                      {categories.map((item, i) => (
                         <Link
@@ -30,7 +29,9 @@ const Navbar = () => {
                         </Link>
                      ))}
                   </div>
+               </div>
 
+               <div className='navbar-right'>
                   <div className='login-links'>
                      <Link
                         className='link'

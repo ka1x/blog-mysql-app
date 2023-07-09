@@ -23,14 +23,19 @@
          letter-spacing: 10px;
       }
 
+      .navbar-links {
+         @include flexCenter();
+         gap: 2rem;
+      }
+
+      .navbar-left {
+         @include flexCenter();
+         flex-direction: row;
+         gap: 2rem
+      }
       .navbar-right {
          @include flexCenter();
          gap: 2rem;
-
-         .navbar-links {
-            @include flexCenter();
-            gap: 1rem;
-         }
       }
    }
 }
