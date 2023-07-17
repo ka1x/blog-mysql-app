@@ -1,5 +1,38 @@
+@import '../../styles/mixins.scss';
 
-.post-container{
-	display: flex;
-	flex-direction: row;
+.post-container {
+   // display: flex;
+   // flex-direction: row;
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+
+   .content {
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+
+      flex-direction: column;
+      padding: 1rem 4rem 1rem 2rem;
+
+      .user {
+         padding: 1rem 1rem 1rem 0;
+      }
+      .img-container{
+
+
+         .post-img {
+            width: 100%;
+            position: relative;
+            height: 66vh;
+            object-fit: cover;
+         }
+      }
+ 
+      h1 {
+         font-family: 'Bacasime Antique', serif;
+         margin: 1rem 0 0 0;
+         font-size: 3rem;
+         font-weight: 500;
+      }
+   }
 }

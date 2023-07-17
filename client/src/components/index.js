@@ -1,6 +1,8 @@
 import Menu from './Menu/Menu';
 import SubscribeBar from './SubscribeBar/SubscribeBar';
+import UserBar from './UserBar/UserBar';
 import Footer from './footer/Footer';
 import Navbar from './navbar/Navbar';
 
-export {Navbar, Footer, Menu, SubscribeBar};
+
+export {Navbar, Footer, Menu, SubscribeBar, UserBar};

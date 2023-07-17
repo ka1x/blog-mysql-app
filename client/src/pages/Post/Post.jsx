@@ -1,7 +1,7 @@
 import React from 'react';
-import {Footer, Navbar, Menu} from '../../components';
+import {Footer, Navbar, Menu, UserBar} from '../../components';
 import {Link} from 'react-router-dom';
-import './post.scss'
+import './post.scss';
 
 const post = {
    id: 1,
@@ -19,13 +19,24 @@ const Post = () => {
          <Navbar></Navbar>
          <div className='post-container'>
             <div className='content'>
-               <img
+               <h1>{post.title}</h1>
+               <UserBar></UserBar>
+               <div className='img-container'>
+                  {/* <img
                   src={`../upload/${post?.img}`}
                   alt=''
-               />
-               <div className='user'>
+               /> */}
+                  <img
+                     className='post-img'
+                     src={post?.img}
+                     alt=''
+                  />
+               </div>
+
+               <p>{post.desc}</p>
+               {/* <div className='user'>
                   {post.userImg && (
-                     <img
+                     <img className='post-img'
                         src={post.userImg}
                         alt=''
                      />
@@ -33,21 +44,19 @@ const Post = () => {
                   <div className='info'>
                      <span>{post.username}</span>
                      <p>Posted {post.date}</p>
-                  </div>
+                  </div> */}
 
-                  {/* <div className="edit">
+               {/* <div className="edit">
               <Link to={`/write?edit=2`}>
                 <img src={Edit} alt="" />
               </Link>
               <img onClick={handleDelete} src={Delete} alt="" />
             </div> */}
-               </div>
-               <h1>{post.title}</h1>
-               <p>{post.desc}</p>
+               {/* </div> */}
             </div>
             <Menu cat={post.cat} />
          </div>
-         <Footer></Footer>
+         {/* <Footer></Footer> */}
       </>
    );
 };

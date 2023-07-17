@@ -22,11 +22,20 @@
             object-fit: cover;
          }
 
+         .user {
+            margin-top: 1rem;
+         }
+
          .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
             h3 {
+               font-family: 'Bacasime Antique', serif;
                margin: 1rem 0 0 0;
                font-size: 2rem;
-               font-weight: 300;
+               font-weight: 500;
             }
             .desc {
                margin: 0.5rem 0;
@@ -34,65 +43,6 @@
                font-size: 0.8rem;
             }
 
-            .user {
-               height: 30%;
-               position: relative;
-               display: flex;
-               justify-content: space-between;
-               flex-direction: row;
-               align-items: center;
-               > div {
-                  display: flex;
-                  justify-content: space-between;
-                  flex-direction: row;
-                  align-items: center;
-                  gap: 1rem;
-               }
-
-               .user-pfp {
-                  position: relative;
-                  height: 100%;
-
-                  img {
-                     display: block;
-                     width: 40px;
-                     height: 40px;
-                     position: relative;
-                     object-fit: cover;
-                     border-radius: 50%;
-                  }
-               }
-
-               .share {
-                  display: block;
-                  @include flexCenter();
-                  position: relative;
-                  gap: 0.8rem;
-                  span {
-                     font-size: 0.7rem;
-                     text-transform: uppercase;
-                  }
-                  .line {
-                     height: 100%;
-                     border: 1px solid black;
-                  }
-               }
-
-               .name-container {
-						p{
-							font-size: .8rem;
-							margin: unset;
-						}
-                  .date {
-                     font-size: 0.8rem;
-                     text-transform: uppercase;
-                     font-family: 'Poppins', sans-serif;
-                     font-weight: 300;
-                     color: var(--darktext-col);
-                     display: block;
-                  }
-               }
-            }
          }
       }
 
@@ -108,7 +58,7 @@
          }
       }
 
-      .post {
+      .post:not(:nth-of-type(1)) {
          .content {
             h3 {
                font-family: 'Bacasime Antique', serif;
@@ -121,6 +71,8 @@
             }
 
             .user {
+               margin: unset;
+
                img {
                   display: none;
                }
@@ -134,13 +86,11 @@
                   display: none;
                }
                .name-container {
-
-						p{
-							
-						text-transform: uppercase;
-						font-size: .6rem;
-						margin: 1rem 0 0 0;
-						}
+                  p {
+                     text-transform: uppercase;
+                     font-size: 0.6rem;
+                     margin: 1rem 0 0 0;
+                  }
                   .date {
                      display: none;
                   }
