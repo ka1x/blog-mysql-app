@@ -17,9 +17,7 @@
       .user {
          padding: 1rem 1rem 1rem 0;
       }
-      .img-container{
-
-
+      .img-container {
          .post-img {
             width: 100%;
             position: relative;
@@ -27,12 +25,18 @@
             object-fit: cover;
          }
       }
- 
+
       h1 {
          font-family: 'Bacasime Antique', serif;
          margin: 1rem 0 0 0;
          font-size: 3rem;
          font-weight: 500;
+      }
+      p {
+         margin-top: 1.5rem;
+         font-size: 0.9rem;
+         letter-spacing: 1px;
+         text-align: justify;
       }
    }
 }
