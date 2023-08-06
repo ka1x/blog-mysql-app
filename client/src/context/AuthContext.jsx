@@ -1,30 +1,31 @@
-import { useEffect, useState } from 'react'
-import { createContext } from 'react'
-import axios from 'axios'
+import {useEffect, useState} from 'react';
+import {createContext} from 'react';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
-export const AuthContext = createContext()
-export const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem('user')) || null
-  )
+export const AuthContext = createContext();
 
-  const login = async inputs => {
-    const res = await axios.post('/auth/login', inputs)
-    setCurrentUser(res.data)
-  }
+export const AuthContextProvider = ({children}) => {
+   const initialCurrentUser = Cookies.get('user');
+   const [currentUser, setCurrentUser] = useState(initialCurrentUser ? JSON.parse(initialCurrentUser) : null);
 
-  const logout = async inputs => {
-    const res = await axios.post('/auth/logout')
-    setCurrentUser(null)
-  }
+   const login = async (inputs) => {
+      const res = await axios.post('/auth/login', inputs);
+      setCurrentUser(res.data);
+   };
 
-  useEffect(() => {
-    localStorage.setItem('user', JSON.stringify(currentUser))
-  }, [currentUser])
+   const logout = async () => {
+      await axios.post('/auth/logout');
+      setCurrentUser(null);
+   };
 
-  return (
-    <AuthContext.Provider value={{ currentUser, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  )
-}
+   useEffect(() => {
+      if (currentUser) {
+         Cookies.set('user', JSON.stringify(currentUser), {expires: 7}); // Set the user data in a cookie
+      } else {
+         Cookies.remove('user'); // Remove the cookie if currentUser is null
+      }
+   }, [currentUser]);
+
+   return <AuthContext.Provider value={{currentUser, login, logout}}>{children}</AuthContext.Provider>;
+};

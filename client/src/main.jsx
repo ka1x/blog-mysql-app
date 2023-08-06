@@ -4,7 +4,7 @@ import App from './App';
 import './styles/index.css';
 import {BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
-import {AuthContextProvider} from './context/authContext';
+import {AuthContextProvider} from './context/AuthContext';
 
 axios.defaults.baseURL = 'http://localhost:8800/api/';
 axios.defaults.withCredentials = true;

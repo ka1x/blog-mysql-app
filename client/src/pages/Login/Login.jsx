@@ -2,7 +2,8 @@ import React, {useContext, useState} from 'react';
 import './login.scss';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
-import {AuthContext} from '../../context/AuthContext';
+
+import {AuthContext} from '../../context/AuthContext.jsx';
 const Login = () => {
    //states//
    const [inputs, setInputs] = useState({
@@ -14,8 +15,8 @@ const Login = () => {
 
    //context//
    const {login} = useContext(AuthContext);
-   const {currentUser} = useContext(AuthContext);
-   console.log(currentUser)
+   // const {currentUser} = useContext(AuthContext);
+   // console.log(currentUser)
 
    //event handlers//
    const handleSubmit = async (e) => {
@@ -25,7 +26,8 @@ const Login = () => {
          await login(inputs);
 
          navigate('/');
-         localStorage.setItem('access_token', res.data);
+         // localStorage.setItem('access_token', res.data);
+         
       } catch (error) {
          setError(error.response.data);
       }
