@@ -61,9 +61,10 @@ const Navbar = () => {
                   ) : (
                      <>
                         <Link
-                           className='link'
+                           className='link login-link'
                            to='/login'>
-                           Login{' '}
+                           <i className='ri-user-3-line'></i>
+                           Login
                         </Link>
                      </>
                   )}

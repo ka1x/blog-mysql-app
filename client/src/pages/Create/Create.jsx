@@ -2,8 +2,9 @@ import React, {useState, useRef} from 'react';
 import {categories} from '../../data/index.js';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import {Footer, Navbar} from '../../components/index.js';
+import {Navbar} from '../../components/index.js';
 import './create.scss';
+import axios from 'axios';
 
 const Create = () => {
    //states//
@@ -19,8 +20,21 @@ const Create = () => {
          fileInputRef.current.click();
       }
    };
+
+   const upload = async () => {
+      try {
+         const formData = new FormData();
+         formData.append('file', file);
+         const res = await axios.post('/upload', formData);
+         return res.data;
+      } catch (err) {
+         console.log(err);
+      }
+   };
+
    const handlePublish = async (e) => {
       e.preventDefault();
+      const imgUrl = await upload();
    };
 
    return (
