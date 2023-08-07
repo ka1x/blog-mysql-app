@@ -1,9 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import './login.scss';
-import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
+import {useAuth} from '../../context/AuthContext';
 
-import {AuthContext} from '../../context/AuthContext.jsx';
 const Login = () => {
    //states//
    const [inputs, setInputs] = useState({
@@ -14,9 +13,7 @@ const Login = () => {
    const navigate = useNavigate();
 
    //context//
-   const {login} = useContext(AuthContext);
-   // const {currentUser} = useContext(AuthContext);
-   // console.log(currentUser)
+   const {login} = useAuth();
 
    //event handlers//
    const handleSubmit = async (e) => {
@@ -24,10 +21,7 @@ const Login = () => {
 
       try {
          await login(inputs);
-
          navigate('/');
-         // localStorage.setItem('access_token', res.data);
-         
       } catch (error) {
          setError(error.response.data);
       }
@@ -37,6 +31,7 @@ const Login = () => {
       setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
    };
 
+   //html//
    return (
       <div>
          <div className='login-page-container'>

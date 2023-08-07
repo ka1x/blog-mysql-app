@@ -1,10 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Footer, Navbar, UserBar} from '../../components';
-import {posts} from '../../data/index.js';
+// import {posts} from '../../data/index.js';
 import {Link} from 'react-router-dom';
 import './home.scss';
+import axios from 'axios';
 
 const Home = () => {
+   const [posts, setPosts] = useState([]);
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const res = await axios.get('/posts');
+            setPosts(res.data);
+         } catch (error) {
+            console.log(error.message);
+         }
+      };
+      fetchData();
+   }, []);
+
    return (
       <>
          <Navbar></Navbar>

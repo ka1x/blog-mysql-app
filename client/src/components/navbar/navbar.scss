@@ -4,7 +4,7 @@
    display: flex;
    flex-direction: column;
    width: 100%;
-
+   
    .navbar-content {
       display: flex;
       align-items: center;
@@ -31,7 +31,7 @@
       .navbar-left {
          @include flexCenter();
          flex-direction: row;
-         gap: 2rem
+         gap: 2rem;
       }
       .navbar-right {
          @include flexCenter();

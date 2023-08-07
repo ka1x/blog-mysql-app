@@ -3,8 +3,20 @@ import {Link} from 'react-router-dom';
 import {categories} from '../../data/index.js';
 import './navbar.scss';
 import SubscribeBar from '../SubscribeBar/SubscribeBar.jsx';
+import {useAuth} from '../../context/AuthContext.jsx';
 
 const Navbar = () => {
+   const {currentUser} = useAuth();
+   const {logout} = useAuth();
+
+   const handleLogout = async () => {
+      try {
+         await logout();
+      } catch (error) {
+         setError(error.response.data);
+      }
+   };
+
    return (
       <>
          <nav className='navbar'>
@@ -32,18 +44,29 @@ const Navbar = () => {
                </div>
 
                <div className='navbar-right'>
-                  <div className='login-links'>
-                     <Link
-                        className='link'
-                        to='/login'>
-                        Login
-                     </Link>
-                     <Link
-                        className='link'
-                        to='/create'>
-                        Create
-                     </Link>
-                  </div>
+                  {currentUser ? (
+                     <>
+                        <Link
+                           className='link'
+                           to='/create'>
+                           Create
+                        </Link>
+                        <Link
+                           className='link'
+                           to='/'
+                           onClick={logout}>
+                           Logout
+                        </Link>
+                     </>
+                  ) : (
+                     <>
+                        <Link
+                           className='link'
+                           to='/login'>
+                           Login{' '}
+                        </Link>
+                     </>
+                  )}
                </div>
             </div>
          </nav>
