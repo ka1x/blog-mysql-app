@@ -29,7 +29,7 @@ const Menu = ({cat}) => {
                <div className='img-container'>
                   <img
                      // src={`../upload/${post?.img}`}
-                     src={`${post?.img}`}
+                     src={`/uploads/${post?.img}`}
                      alt=''
                   />
                </div>

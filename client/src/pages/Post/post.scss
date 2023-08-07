@@ -12,7 +12,9 @@
       justify-content: flex-start;
 
       flex-direction: column;
-      padding: 1rem 4rem;
+      width: 75%;
+      margin: auto;
+      padding: 1rem 0;
       .edit {
          display: flex;
          justify-content: flex-end;
@@ -37,11 +39,13 @@
          font-size: 3rem;
          font-weight: 500;
       }
-      p {
+      .desc-container {
          margin-top: 1.5rem;
          font-size: 0.9rem;
          letter-spacing: 1px;
          text-align: justify;
+         width: 100%;
+         word-wrap: break-word;
       }
    }
 }

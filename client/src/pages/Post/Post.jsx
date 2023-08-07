@@ -4,6 +4,8 @@ import {Link, useLocation, useNavigate} from 'react-router-dom';
 import './post.scss';
 import {useAuth} from '../../context/AuthContext';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
+
 const Post = () => {
    const [post, setPost] = useState({});
 
@@ -44,7 +46,9 @@ const Post = () => {
                {currentUser.username === post.username ? (
                   <>
                      <div className='edit'>
-                        <Link to={`/write?edit=2`}>
+                        <Link
+                           to={`/create?edit=2`}
+                           state={post}>
                            <i className='ri-edit-line'></i>
                         </Link>
                         <i
@@ -58,13 +62,24 @@ const Post = () => {
                <UserBar data={post}></UserBar>
 
                <div className='img-container'>
-                  <img
+                  {/* <img
                      className='post-img'
                      src={post?.img}
                      alt=''
+                  /> */}
+                  <img
+                     className='post-img'
+                     src={`/uploads/${post?.img}`}
+                     alt=''
                   />
                </div>
-               <p>{post?.desc}</p>
+               <p
+                  className='desc-container'
+                  dangerouslySetInnerHTML={{
+                     __html: DOMPurify.sanitize(post.desc),
+                  }}>
+                  {/* {post?.desc} */}
+               </p>
             </div>
             <Menu cat={post?.cat} />
          </div>

@@ -11,7 +11,7 @@ app.use(cors({ credentials: true, origin: true }))
 //multer for file upload
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './uploads')
+    cb(null, '../client/public/uploads')
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)

@@ -33,7 +33,7 @@ const Home = () => {
                      key={i}>
                      <div className='img'>
                         <img
-                           src={post?.img}
+                           src={`/uploads/${post?.img}`}
                            alt=''
                         />
                      </div>
