@@ -27,7 +27,7 @@ const Home = () => {
          <Navbar></Navbar>
          <div className='home-container'>
             <div className='home-posts'>
-               {posts.slice(0,5).map((post, i) => (
+               {posts.slice(0, 5).map((post, i) => (
                   <div
                      className='post'
                      key={i}>

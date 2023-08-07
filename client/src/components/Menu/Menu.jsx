@@ -1,9 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {categories, posts} from '../../data/index.js';
 import {Link} from 'react-router-dom';
 import './menu.scss';
+import axios from 'axios';
 
 const Menu = ({cat}) => {
+   const [posts, setPosts] = useState([]);
+
+   useEffect(() => {
+      const fetchPosts = async () => {
+         try {
+            const res = await axios.get(`/posts/?cat=${cat}`);
+            setPosts(res.data);
+         } catch (error) {
+            console.log(error.message);
+         }
+      };
+      fetchPosts();
+   }, [cat]);
+
    return (
       <div className='menu'>
          <h1>Other posts you may like</h1>
