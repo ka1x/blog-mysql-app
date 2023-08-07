@@ -25,7 +25,7 @@ export const AuthContextProvider = ({children}) => {
 
    useEffect(() => {
       if (currentUser) {
-         Cookies.set('user', JSON.stringify(currentUser), {expires: 7}); // Set the user data in a cookie
+         Cookies.set('user', JSON.stringify(currentUser)); // Set the user data in a cookie
       } else {
          Cookies.remove('user'); // Remove the cookie if currentUser is null
       }

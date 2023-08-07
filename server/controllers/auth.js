@@ -1,5 +1,6 @@
 import { db } from '../db.js'
 import bcrypt from 'bcryptjs'
+import cookieParser from 'cookie-parser'
 import jwt from 'jsonwebtoken'
 
 //REGISTERING USER//
@@ -50,10 +51,13 @@ export const login = (req, res) => {
 
     res
       .cookie('access_token', token, {
-        httpOnly: true
+        httpOnly: true,
+        sameSite: 'none', // Allow cross-site access, requires secure connection (HTTPS)
+        secure: true
+        // sameSite: 'lax',
       })
       .status(200)
-      .json(token)
+      .json(other)
   })
 }
 
