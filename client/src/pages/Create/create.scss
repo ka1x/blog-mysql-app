@@ -1,0 +1,23 @@
+.create-container {
+   margin: auto;
+   width: 80%;
+   display: grid;
+   grid-template-columns: 3fr 1fr;
+   gap: 2rem;
+
+   .ql-editor {
+      min-height: 50vh;
+   }
+
+   .file-container {
+      width: 100%;
+   }
+   button {
+      background: none;
+      outline: none;
+      border: 1px solid black;
+      padding: 0.5rem 1rem;
+      width: 100%;
+      cursor: pointer;
+   }
+}

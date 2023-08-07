@@ -18,8 +18,8 @@ export const register = (req, res) => {
     const hash = bcrypt.hashSync(req.body.password, salt)
 
     //inserting into database
-    const q = 'insert into users(`username`,`email`,`password`) values (?)'
-    const values = [req.body.username, req.body.email, hash]
+    const q = 'insert into users(`username`,`email`,`password`, `firstname`, `lastname`) values (?)'
+    const values = [req.body.username, req.body.email, hash, req.body.firstname, req.body.lastname]
 
     db.query(q, [values], (err, data) => {
       if (err) return res.json(err)

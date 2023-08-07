@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import '../Login/login.scss';
 import {Link, useNavigate} from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 
 const Register = () => {
-
-  //states//
+   //states//
    const [inputs, setInputs] = useState({
       username: '',
       email: '',
       password: '',
+      firstname: '',
+      lastname: '',
    });
    const [err, setError] = useState(null);
    const navigate = useNavigate();
@@ -17,19 +18,17 @@ const Register = () => {
    //event handlers//
    const handleSubmit = async (e) => {
       e.preventDefault();
-      
+
       try {
          await axios.post('/auth/register', inputs);
          navigate('/login');
-  
       } catch (error) {
-         setError(error.response.data)
+         setError(error.response.data);
       }
-
    };
 
    const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+      setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
    };
 
    return (
@@ -46,6 +45,20 @@ const Register = () => {
                         type='text'
                         placeholder='username'
                         name='username'
+                        onChange={handleChange}
+                     />{' '}
+                     <input
+                        required
+                        type='text'
+                        placeholder='firstname'
+                        name='firstname'
+                        onChange={handleChange}
+                     />{' '}
+                     <input
+                        required
+                        type='text'
+                        placeholder='lastname'
+                        name='lastname'
                         onChange={handleChange}
                      />
                      <input
@@ -73,7 +86,7 @@ const Register = () => {
                         type='submit'
                         className='button form-btn'
                         value={'Sign up'}></input>
-                          {err && <p className='error'>{err}</p>}
+                     {err && <p className='error'>{err}</p>}
                   </form>
                </>
             </div>
