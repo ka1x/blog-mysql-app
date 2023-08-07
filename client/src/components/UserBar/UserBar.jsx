@@ -1,18 +1,25 @@
 import React from 'react';
 import './userbar.scss';
 
-const UserBar = () => {
+const UserBar = ({data}) => {
    return (
       <div className='user'>
          <div>
             <div className='user-pfp'>
                <img
-                  src='https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=600'
+                  src={data?.userImg}
                   alt=''
                />
+               {/* <img
+                  src='https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=600'
+                  alt=''
+               /> */}
             </div>
             <div className='name-container'>
-               <p>ABRAHAM COLLINS</p>
+               <p style={{textTransform: 'uppercase'}}>
+                  {' '}
+                  {data?.firstname} {data?.lastname}{' '}
+               </p>
                <span className='date'> June 21 2023</span>
             </div>
          </div>

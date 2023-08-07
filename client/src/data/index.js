@@ -19,7 +19,7 @@ export const posts = [
       img: 'https://images.pexels.com/photos/16750660/pexels-photo-16750660/free-photo-of-sea-beach-vacation-sand.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
    },
    {
-      id: 3,
+      id: 3, 
       title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
       desc: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!',
       img: 'https://images.pexels.com/photos/17029301/pexels-photo-17029301/free-photo-of-desert-leaf-medicine-cactus.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',

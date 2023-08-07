@@ -1,18 +1,39 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Footer, Navbar, Menu, UserBar} from '../../components';
-import {Link} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import './post.scss';
-
-const post = {
-   id: 1,
-   title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
-   desc: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. A possimus excepturi aliquid nihil cumque ipsam facere aperiam at! Ea dolorem ratione sit debitis deserunt repellendus numquam ab vel perspiciatis corporis!',
-   img: 'https://images.pexels.com/photos/7008010/pexels-photo-7008010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-};
-
+import {useAuth} from '../../context/AuthContext';
+import axios from 'axios';
 const Post = () => {
-   // event handlers //
-   const handleDelete = () => {};
+   const [post, setPost] = useState({});
+
+   const location = useLocation();
+   const postId = location.pathname.split('/')[2];
+
+   const navigate = useNavigate();
+   const {currentUser} = useAuth();
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const res = await axios.get(`/posts/${postId}`);
+            setPost(res.data);
+         } catch (err) {
+            console.log(err);
+         }
+      };
+      fetchData();
+   }, [postId]);
+
+   //event handlers//
+   const handleDelete = async ()=>{
+      try {
+        await axios.delete(`/posts/${postId}`);
+        navigate("/")
+      } catch (err) {
+        console.log(err);
+      }
+    }
 
    return (
       <>
@@ -20,41 +41,32 @@ const Post = () => {
          <div className='post-container'>
             <div className='content'>
                <h1>{post.title}</h1>
-               <UserBar></UserBar>
+               <UserBar data={post}></UserBar>
+
+               {currentUser ? (
+                  <>
+                     <div className='edit'>
+                        <Link to={`/write?edit=2`}>
+                           <i className='ri-edit-line'></i>
+                        </Link>
+                        <i
+                           className='ri-delete-bin-6-line'
+                           onClick={handleDelete}></i>
+                     </div>{' '}
+                  </>
+               ) : (
+                  <></>
+               )}
                <div className='img-container'>
-                  {/* <img
-                  src={`../upload/${post?.img}`}
-                  alt=''
-               /> */}
                   <img
                      className='post-img'
                      src={post?.img}
                      alt=''
                   />
                </div>
-
-               <p>{post.desc}</p>
-               {/* <div className='user'>
-                  {post.userImg && (
-                     <img className='post-img'
-                        src={post.userImg}
-                        alt=''
-                     />
-                  )}
-                  <div className='info'>
-                     <span>{post.username}</span>
-                     <p>Posted {post.date}</p>
-                  </div> */}
-
-               {/* <div className="edit">
-              <Link to={`/write?edit=2`}>
-                <img src={Edit} alt="" />
-              </Link>
-              <img onClick={handleDelete} src={Delete} alt="" />
-            </div> */}
-               {/* </div> */}
+               <p>{post?.desc}</p>
             </div>
-            <Menu cat={post.cat} />
+            <Menu cat={post?.cat} />
          </div>
          {/* <Footer></Footer> */}
       </>
