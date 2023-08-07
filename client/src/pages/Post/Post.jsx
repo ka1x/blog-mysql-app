@@ -26,14 +26,14 @@ const Post = () => {
    }, [postId]);
 
    //event handlers//
-   const handleDelete = async ()=>{
+   const handleDelete = async () => {
       try {
-        await axios.delete(`/posts/${postId}`);
-        navigate("/")
+         await axios.delete(`/posts/${postId}`);
+         navigate('/');
       } catch (err) {
-        console.log(err);
+         console.log(err);
       }
-    }
+   };
 
    return (
       <>
@@ -41,8 +41,6 @@ const Post = () => {
          <div className='post-container'>
             <div className='content'>
                <h1>{post.title}</h1>
-               <UserBar data={post}></UserBar>
-
                {currentUser ? (
                   <>
                      <div className='edit'>
@@ -57,6 +55,8 @@ const Post = () => {
                ) : (
                   <></>
                )}
+               <UserBar data={post}></UserBar>
+
                <div className='img-container'>
                   <img
                      className='post-img'

@@ -1,10 +1,8 @@
 import React from 'react';
 import './userbar.scss';
-import {parseISO, format} from 'date-fns';
+import {format} from 'date-fns';
 
 const UserBar = ({data}) => {
-  
-   
    const renderDate = () => {
       if (data.date) {
          const sqlDatetime = data?.date;
@@ -33,12 +31,7 @@ const UserBar = ({data}) => {
                />
             </div>
             <div className='name-container'>
-               <p style={{textTransform: 'uppercase'}}>
-                  {' '}
-                  {data?.firstname} {data?.lastname}{' '}
-               </p>
-               {/* <span className='date'> {data.date ? `${formattedDate}` : 'June 21 2023'}</span> */}
-               {/* <span className='date'> {formattedDate}</span> */}
+               <p style={{textTransform: 'uppercase'}}>{` ${data?.firstname} ${data?.lastname}`}</p>
                {renderDate()}
             </div>
          </div>
