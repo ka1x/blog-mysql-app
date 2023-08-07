@@ -41,7 +41,7 @@ const Post = () => {
          <div className='post-container'>
             <div className='content'>
                <h1>{post.title}</h1>
-               {currentUser ? (
+               {currentUser.username === post.username ? (
                   <>
                      <div className='edit'>
                         <Link to={`/write?edit=2`}>

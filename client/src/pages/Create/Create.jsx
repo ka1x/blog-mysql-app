@@ -19,7 +19,9 @@ const Create = () => {
          fileInputRef.current.click();
       }
    };
-   const handlePublish = () => {};
+   const handlePublish = async (e) => {
+      e.preventDefault();
+   };
 
    return (
       <>
@@ -27,6 +29,7 @@ const Create = () => {
          <div className='create-container'>
             <div className='content'>
                <input
+                  className='title'
                   type='text'
                   placeholder='Title'
                   onChange={(e) => setTitle(e.target.value)}
@@ -42,14 +45,13 @@ const Create = () => {
             </div>
 
             <div className='menu'>
-               <div className='item'>
-                  <h1>Publish</h1>
-                  <span>
+               <div className='options'>
+                  <p>
                      <b>Status: </b> Draft
-                  </span>
-                  <span>
+                  </p>
+                  <p>
                      <b>Visibility: </b> Public
-                  </span>
+                  </p>
                   <div className='file-container'>
                      <input
                         style={{display: 'none'}}
@@ -66,32 +68,32 @@ const Create = () => {
                      </button>
                   </div>
 
-                  <div className='buttons'>
-                     <button>Save as a draft</button>
-                     <button onClick={handlePublish}>Publish</button>
+                  <div className='item'>
+                     <h1>Category</h1>
+
+                     {categories.map((cat, i) => (
+                        <div
+                           className='cat'
+                           key={i}>
+                           <input
+                              type='radio'
+                              name='cat'
+                              value={cat.linkname}
+                              id={cat.linkname}
+                              onChange={(e) => setCat(e.target.value)}
+                           />
+                           <label htmlFor={cat.linkname}>{cat.title}</label>
+                        </div>
+                     ))}
                   </div>
                </div>
-               <div className='item'>
-                  <h1>Category</h1>
-
-                  {categories.map((cat, i) => (
-                     <div
-                        className='cat'
-                        key={i}>
-                        <input
-                           type='radio'
-                           name='cat'
-                           value={cat.linkname}
-                           id={cat.linkname}
-                           onChange={(e) => setCat(e.target.value)}
-                        />
-                        <label htmlFor={cat.linkname}>{cat.title}</label>
-                     </div>
-                  ))}
+               <div className='buttons'>
+                  <button>Save as a draft</button>
+                  <button onClick={handlePublish}>Publish</button>
                </div>
             </div>
          </div>
-         <Footer></Footer>
+         {/* <Footer></Footer> */}
       </>
    );
 };
