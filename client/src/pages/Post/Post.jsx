@@ -76,7 +76,7 @@ const Post = () => {
                <p
                   className='desc-container'
                   dangerouslySetInnerHTML={{
-                     __html: DOMPurify.sanitize(post.desc),
+                     __html: DOMPurify.sanitize(post?.desc),
                   }}>
                   {/* {post?.desc} */}
                </p>
