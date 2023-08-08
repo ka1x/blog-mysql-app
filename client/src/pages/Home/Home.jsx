@@ -8,11 +8,11 @@ import axios from 'axios';
 const Home = () => {
    const [posts, setPosts] = useState([]);
    const [page, setPage] = useState(0);
+   const [animate, setAnimate] = useState(false);
 
    const postsPerPage = 5;
    const startIndex = page * postsPerPage;
    const endIndex = startIndex + postsPerPage;
-
    const maxPage = Math.floor(posts.length / postsPerPage - 1);
 
    const category = useLocation().search;
@@ -29,6 +29,20 @@ const Home = () => {
       fetchData();
       setPage(0);
    }, [category]);
+
+   useEffect(() => {
+      // Whenever the page changes, trigger the animation
+      setAnimate(true);
+
+      // After the animation duration, reset the animate state
+      const animationDuration = 1000; // 1 second
+      const timeoutId = setTimeout(() => {
+         setAnimate(false);
+      }, animationDuration);
+
+      // Clean up the timeout when the component unmounts or when the page changes again
+      return () => clearTimeout(timeoutId);
+   }, [page]);
 
    const getText = (html) => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -47,10 +61,10 @@ const Home = () => {
 
    const renderPosts = () => {
       return (
-         <div className='home-posts'>
+         <div className={`home-posts ${animate ? 'active' : ''}`}>
             {posts.slice(startIndex, endIndex).map((post, i) => (
                <div
-                  className='post'
+                  className={`post `}
                   key={i}>
                   <div className='img'>
                      <img
