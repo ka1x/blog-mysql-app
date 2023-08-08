@@ -37,6 +37,11 @@ const Post = () => {
       }
    };
 
+   const getText = (html) => {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      return doc.body.textContent;
+   };
+
    return (
       <>
          <Navbar></Navbar>
@@ -62,28 +67,18 @@ const Post = () => {
                <UserBar data={post}></UserBar>
 
                <div className='img-container'>
-                  {/* <img
-                     className='post-img'
-                     src={post?.img}
-                     alt=''
-                  /> */}
                   <img
                      className='post-img'
                      src={`/uploads/${post?.img}`}
                      alt=''
                   />
                </div>
-               <p
-                  className='desc-container'
-                  dangerouslySetInnerHTML={{
-                     __html: DOMPurify.sanitize(post?.desc),
-                  }}>
-                  {/* {post?.desc} */}
+               <p className='desc-container'>
+                  {getText(post?.desc)}
                </p>
             </div>
             <Menu cat={post?.cat} />
          </div>
-         {/* <Footer></Footer> */}
       </>
    );
 };

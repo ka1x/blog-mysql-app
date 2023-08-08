@@ -1,7 +1,7 @@
 import React from 'react';
 import './footer.scss';
 
-const Footer = ({page, setPage, posts, postsPerPage}) => {
+const Footer = ({page, setPage, maxPage}) => {
    const handleLeft = () => {
       if (page > 0) {
          setPage(page - 1);
@@ -9,7 +9,6 @@ const Footer = ({page, setPage, posts, postsPerPage}) => {
    };
 
    const handleRight = () => {
-      const maxPage = Math.floor(posts.length / postsPerPage);
       if (page < maxPage) {
          setPage(page + 1);
       }

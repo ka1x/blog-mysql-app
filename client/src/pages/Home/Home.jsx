@@ -4,8 +4,6 @@ import {Footer, Navbar, UserBar} from '../../components';
 import {Link, useLocation} from 'react-router-dom';
 import './home.scss';
 import axios from 'axios';
-import DOMPurify from 'dompurify';
-
 
 const Home = () => {
    const [posts, setPosts] = useState([]);
@@ -14,6 +12,8 @@ const Home = () => {
    const postsPerPage = 5;
    const startIndex = page * postsPerPage;
    const endIndex = startIndex + postsPerPage;
+
+   const maxPage = Math.floor(posts.length / postsPerPage - 1);
 
    const category = useLocation().search;
 
@@ -27,7 +27,23 @@ const Home = () => {
          }
       };
       fetchData();
+      setPage(0);
    }, [category]);
+
+   const getText = (html) => {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const textContent = doc.body.textContent.trim(); // Remove leading/trailing whitespace
+      const words = textContent.split(/\s+/); // Split into words
+
+      const maxWords = 100;
+      let truncatedText = words.slice(0, maxWords).join(' ');
+
+      if (words.length > maxWords) {
+         truncatedText += ' ...';
+      }
+
+      return truncatedText;
+   };
 
    const renderPosts = () => {
       return (
@@ -46,12 +62,7 @@ const Home = () => {
                      <Link to={`/post/${post.id}`}>
                         <h3>{post?.title}</h3>
                      </Link>
-
-                     <p className='desc'  dangerouslySetInnerHTML={{
-                     __html: DOMPurify.sanitize(post?.desc),
-                  }}>
-                     {/* {post?.desc} */}
-                     </p>
+                     <p className='desc'>{getText(post?.desc)}</p>
 
                      <UserBar data={post} />
                   </div>
@@ -61,44 +72,16 @@ const Home = () => {
       );
    };
 
-   // useEffect(() => {
-   //    console.log('page ' + page + ' start ' + startIndex + ' end ' + endIndex);
-   // }, [page]);
-
    return (
       <>
          <Navbar />
-         <div className='home-container'>
-            {/* <div className='home-posts'>
-               {posts.slice(page[0], page[1]).map((post, i) => (
-                  <div
-                     className='post'
-                     key={i}>
-                     <div className='img'>
-                        <img
-                           src={`/uploads/${post?.img}`}
-                           alt=''
-                        />
-                     </div>
-                     <div className='content'>
-                        <Link to={`/post/${post.id}`}>
-                           <h3>{post?.title}</h3>
-                        </Link>
-
-                        <p className='desc'>{post?.desc}</p>
-
-                        <UserBar data={post} />
-                     </div>
-                  </div>
-               ))}
-            </div> */}
-            {renderPosts()}
-         </div>
+         <div className='home-container'>{renderPosts()}</div>
          <Footer
             page={page}
             setPage={setPage}
             posts={posts}
             postsPerPage={postsPerPage}
+            maxPage={maxPage}
          />
       </>
    );
