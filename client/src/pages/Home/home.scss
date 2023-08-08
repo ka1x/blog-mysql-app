@@ -1,4 +1,5 @@
 @import '../../styles/mixins.scss';
+@import '../../styles/animations.scss';
 
 .home-container {
    @include flexCenter();
@@ -18,6 +19,7 @@
          display: flex;
          justify-content: flex-start;
          width: 100%;
+         animation: slideDown 1s ease;
 
          flex-direction: column;
          img {
