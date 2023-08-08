@@ -1,5 +1,6 @@
 import { db } from '../db.js'
 import jwt from 'jsonwebtoken'
+import fs from 'fs'
 
 export const getPosts = (req, res) => {
   const q = req.query.cat
@@ -81,6 +82,7 @@ export const deletePost = (req, res) => {
     if (err) return res.status(403).json('Token is not valid!')
 
     const postId = req.params.id
+
     const q = 'DELETE FROM posts WHERE `id` = ? AND `uid` = ?'
 
     db.query(q, [postId, userInfo.id], (err, data) => {
@@ -90,3 +92,42 @@ export const deletePost = (req, res) => {
     })
   })
 }
+
+const deleteOrphanedImages = () => {
+  const selectQuery = 'SELECT `id`, `img` FROM posts'
+  db.query(selectQuery, (err, rows) => {
+    if (err) {
+      console.error('Error retrieving posts:', err)
+      return
+    }
+
+    const imagePathsInDatabase = rows.map(row => row.img)
+
+    // Read the directory containing your uploaded images
+    const imageUploadsPath = '../client/public/uploads'
+    fs.readdir(imageUploadsPath, (readErr, files) => {
+      if (readErr) {
+        console.error('Error reading directory:', readErr)
+        return
+      }
+
+      // Delete images that are in the directory but not in the database
+      files.forEach(file => {
+        const imagePath = `${imageUploadsPath}/${file}`
+
+        if (!imagePathsInDatabase.includes(file)) {
+          fs.unlink(imagePath, unlinkErr => {
+            if (unlinkErr) {
+              console.error('Error deleting image:', unlinkErr)
+            } else {
+              console.log('Orphaned image deleted:', imagePath)
+            }
+          })
+        }
+      })
+    })
+  })
+}
+
+const interval = 3600000 * 8 // 1 hour * 8
+setInterval(deleteOrphanedImages, interval)
