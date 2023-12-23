@@ -36,6 +36,9 @@
             gap: 1rem;
          }
       }
+      .buttons {
+         width: 100%;
+      }
       button {
          background: none;
          outline: none;
@@ -51,18 +54,16 @@
 @media (max-width: 656px) {
    .create-container {
       grid-template-columns: unset;
-      margin:  0 2rem;
-      .content{
+      margin: 0 2rem;
+      .content {
          margin-top: 1rem;
       }
 
-      
-   .menu {
-      .buttons{
-         width: 100%;
-         margin-bottom: 2rem;
+      .menu {
+         .buttons {
+            width: 100%;
+            margin-bottom: 2rem;
+         }
       }
    }
-   }
-
 }
