@@ -29,11 +29,17 @@ const Post = () => {
 
    //event handlers//
    const handleDelete = async () => {
-      try {
-         await axios.delete(`/posts/${postId}`);
-         navigate('/');
-      } catch (err) {
-         console.log(err);
+      // Display a confirmation dialog
+      const isConfirmed = window.confirm('Are you sure you want to delete this post?');
+
+      // If the user confirms, proceed with the deletion
+      if (isConfirmed) {
+         try {
+            await axios.delete(`/posts/${postId}`);
+            navigate('/');
+         } catch (err) {
+            console.log(err);
+         }
       }
    };
 
@@ -48,6 +54,17 @@ const Post = () => {
          <div className='post-container'>
             <div className='content'>
                <h1>{post.title}</h1>
+
+               <UserBar data={post}></UserBar>
+
+               <div className='img-container'>
+                  <img
+                     className='post-img'
+                     src={`/uploads/${post?.img}`}
+                     alt=''
+                  />
+               </div>
+               <p className='desc-container'>{getText(post?.desc)}</p>
                {currentUser?.username === post.username ? (
                   <>
                      <div className='edit'>
@@ -64,16 +81,6 @@ const Post = () => {
                ) : (
                   <></>
                )}
-               <UserBar data={post}></UserBar>
-
-               <div className='img-container'>
-                  <img
-                     className='post-img'
-                     src={`/uploads/${post?.img}`}
-                     alt=''
-                  />
-               </div>
-               <p className='desc-container'>{getText(post?.desc)}</p>
             </div>
             <Menu cat={post?.cat} />
          </div>
