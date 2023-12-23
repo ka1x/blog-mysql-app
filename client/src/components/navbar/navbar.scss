@@ -37,6 +37,10 @@
          @include flexCenter();
          gap: 2rem;
 
+         .i-loggedin {
+            font-size: 1.5rem;
+         }
+
          .login-link {
             .ri-user-3-line:before {
                font-weight: 400;
@@ -47,12 +51,25 @@
          }
       }
    }
+   .menu-mobile {
+      display: none;
+      pointer-events: none;
+      z-index: -99;
+   }
 }
 
 @media (max-width: 767px) {
    .navbar {
       .navbar-content {
          padding: 1.5rem 2rem;
+      }
+   }
+
+   .menu-mobile {
+      display: block;
+
+      i {
+         font-size: 1.5rem;
       }
    }
 }

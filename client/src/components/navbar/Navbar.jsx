@@ -49,7 +49,8 @@ const Navbar = () => {
                         <Link
                            className='link'
                            to='/create'>
-                           Create
+                           {/* Create */}
+                           <i className='i-loggedin ri-pen-nib-line'></i>
                         </Link>
                         <Link
                            className='link'
@@ -68,6 +69,10 @@ const Navbar = () => {
                         </Link>
                      </>
                   )}
+               </div>
+
+               <div className="menu-mobile">
+                  <i className="ri-menu-line"></i>
                </div>
             </div>
          </nav>
