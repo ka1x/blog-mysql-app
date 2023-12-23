@@ -69,10 +69,10 @@ const Navbar = () => {
                         </Link>
                      </>
                   )}
-               </div>
 
-               <div className="menu-mobile">
-                  <i className="ri-menu-line"></i>
+                  <div className='menu-mobile'>
+                     <i className='ri-menu-line'></i>
+                  </div>
                </div>
             </div>
          </nav>

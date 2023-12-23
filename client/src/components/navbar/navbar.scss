@@ -38,7 +38,8 @@
          gap: 2rem;
 
          .i-loggedin {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: lighter;
          }
 
          .login-link {
@@ -58,18 +59,23 @@
    }
 }
 
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
    .navbar {
       .navbar-content {
          padding: 1.5rem 2rem;
+
+         .navbar-links {
+            display: none;
+         }
       }
-   }
 
-   .menu-mobile {
-      display: block;
-
-      i {
-         font-size: 1.5rem;
+      .menu-mobile {
+         display: block;
+         pointer-events: all;
+         z-index: 99;
+         i {
+            font-size: 1.3rem;
+         }
       }
    }
 }
