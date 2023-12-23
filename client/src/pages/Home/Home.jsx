@@ -10,6 +10,8 @@ const Home = () => {
    const [page, setPage] = useState(0);
    const [animate, setAnimate] = useState(false);
 
+   const [loading, setLoading] = useState(true);
+
    const postsPerPage = 5;
    const startIndex = page * postsPerPage;
    const endIndex = startIndex + postsPerPage;
@@ -28,15 +30,18 @@ const Home = () => {
       };
       fetchData();
       setPage(0);
+      setLoading(false);
    }, [category]);
 
    useEffect(() => {
       // Whenever the page changes, trigger the animation
       setAnimate(true);
+      setLoading(true);
 
       // After the animation duration, reset the animate state
-      const animationDuration = 1000; // 1 second
+      const animationDuration = 500; // 1 second
       const timeoutId = setTimeout(() => {
+         setLoading(false);
          setAnimate(false);
       }, animationDuration);
 
@@ -61,28 +66,34 @@ const Home = () => {
 
    const renderPosts = () => {
       return (
-         <div className={`home-posts ${animate ? 'active' : ''}`}>
-            {posts.slice(startIndex, endIndex).map((post, i) => (
-               <div
-                  className={`post `}
-                  key={i}>
-                  <div className='img'>
-                     <img
-                        src={`/uploads/${post?.img}`}
-                        alt=''
-                     />
-                  </div>
-                  <div className='content'>
-                     <Link to={`/post/${post.id}`}>
-                        <h3>{post?.title}</h3>
-                     </Link>
-                     <p className='desc'>{getText(post?.desc)}</p>
+         <>
+            {loading ? (
+               <div className='loading-spinner'>Loading...</div>
+            ) : (
+               <div className={`home-posts ${animate ? 'active' : ''}`}>
+                  {posts.slice(startIndex, endIndex).map((post, i) => (
+                     <div
+                        className={`post `}
+                        key={i}>
+                        <div className='img'>
+                           <img
+                              src={`/uploads/${post?.img}`}
+                              alt=''
+                           />
+                        </div>
+                        <div className='content'>
+                           <Link to={`/post/${post.id}`}>
+                              <h3>{post?.title}</h3>
+                           </Link>
+                           <p className='desc'>{getText(post?.desc)}</p>
 
-                     <UserBar data={post} />
-                  </div>
+                           <UserBar data={post} />
+                        </div>
+                     </div>
+                  ))}
                </div>
-            ))}
-         </div>
+            )}
+         </>
       );
    };
 

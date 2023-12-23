@@ -43,35 +43,35 @@ const Register = () => {
                      <input
                         required
                         type='text'
-                        placeholder='username'
+                        placeholder='Username'
                         name='username'
                         onChange={handleChange}
                      />{' '}
                      <input
                         required
                         type='text'
-                        placeholder='firstname'
+                        placeholder='First Name'
                         name='firstname'
                         onChange={handleChange}
                      />{' '}
                      <input
                         required
                         type='text'
-                        placeholder='lastname'
+                        placeholder='Last Name'
                         name='lastname'
                         onChange={handleChange}
                      />
                      <input
                         required
                         type='email'
-                        placeholder='email'
+                        placeholder='Email'
                         name='email'
                         onChange={handleChange}
                      />
                      <input
                         required
                         type='password'
-                        placeholder='password'
+                        placeholder='Password'
                         name='password'
                         onChange={handleChange}
                      />

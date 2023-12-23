@@ -8,12 +8,15 @@
    justify-content: space-between;
    background: var(--lightbg-col);
    padding: 0.5rem 7rem;
+   flex-direction: row;
 
    .sub-left {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-direction: row;
+      flex-direction: row;
+
       gap: 1rem;
 
       span {
@@ -63,6 +66,18 @@
             color: var(--lighttext-col);
             font-size: 0.8rem;
          }
+      }
+   }
+}
+
+@media (max-width: 767px) {
+   .sub-bar {
+      display: none;
+      flex-direction: column;
+      gap: 2rem;
+
+      .sub-left {
+         flex-direction: column;
       }
    }
 }

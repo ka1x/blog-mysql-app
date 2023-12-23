@@ -48,7 +48,7 @@ const Post = () => {
          <div className='post-container'>
             <div className='content'>
                <h1>{post.title}</h1>
-               {currentUser.username === post.username ? (
+               {currentUser?.username === post.username ? (
                   <>
                      <div className='edit'>
                         <Link
@@ -73,9 +73,7 @@ const Post = () => {
                      alt=''
                   />
                </div>
-               <p className='desc-container'>
-                  {getText(post?.desc)}
-               </p>
+               <p className='desc-container'>{getText(post?.desc)}</p>
             </div>
             <Menu cat={post?.cat} />
          </div>

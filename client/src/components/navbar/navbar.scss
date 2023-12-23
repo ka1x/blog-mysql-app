@@ -48,3 +48,11 @@
       }
    }
 }
+
+@media (max-width: 767px) {
+   .navbar {
+      .navbar-content {
+         padding: 1.5rem 2rem;
+      }
+   }
+}

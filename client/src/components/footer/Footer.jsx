@@ -6,12 +6,14 @@ const Footer = ({page, setPage, maxPage}) => {
       if (page > 0) {
          setPage(page - 1);
       }
+
    };
 
    const handleRight = () => {
       if (page < maxPage) {
          setPage(page + 1);
       }
+
    };
 
    return (
