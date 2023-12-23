@@ -20,7 +20,7 @@
          gap: 1rem;
          input {
             width: 100%;
-				padding: .5rem 1rem;
+            padding: 0.5rem 1rem;
          }
 
          > div {
@@ -30,6 +30,12 @@
 
          h3 {
             margin: 0.3rem 0 1.3rem 0;
+            font-family: 'Bacasime Antique', serif;
+            font-size: 2rem;
+            border-bottom: 1px solid var(--accent-col);
+            width: 100%;
+            text-align: center;
+            padding: 0 0 1rem 0;
          }
 
          span {
@@ -56,7 +62,7 @@
          .error {
             font-size: 0.8rem;
             color: red;
-				text-transform: uppercase;
+            text-transform: uppercase;
          }
       }
    }
