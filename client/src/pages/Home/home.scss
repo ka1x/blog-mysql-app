@@ -3,7 +3,7 @@
 
 .home-container {
    @include flexCenter();
-   padding: 2rem 7rem 1rem 7rem;
+   padding: 2rem 10rem 1rem 10em;
    .loading-spinner {
       display: flex;
       align-items: center;
@@ -46,6 +46,7 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: stretch;
+            position: relative;
             h3 {
                font-family: 'Bacasime Antique', serif;
                margin: 1rem 0 0 0;
@@ -73,7 +74,15 @@
       }
 
       .post:not(:nth-of-type(1)) {
+         height: 100%;
+         position: relative;
+
          .content {
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: .5rem 0 0 0;
             h3 {
                font-family: 'Bacasime Antique', serif;
                font-size: 1.3rem;

@@ -15,15 +15,26 @@ const Create = () => {
    const [title, setTitle] = useState(state?.title || '');
    const [cat, setCat] = useState(state?.cat || '');
    const [file, setFile] = useState(null);
+   const [fileName, setFileName] = useState('');
 
    const fileInputRef = useRef(null);
    const navigate = useNavigate();
 
    //event handlers//
-   const handleButtonClick = () => {
+   const handleFileUploadClick = () => {
       if (fileInputRef.current) {
          fileInputRef.current.click();
       }
+   };
+   const handleSetFile = () => {
+      const selectedFile = fileInputRef.current.files[0];
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
+   };
+
+   const handleClearFile = () => {
+      setFile(null);
+      setFileName('');
    };
 
    const upload = async () => {
@@ -88,27 +99,12 @@ const Create = () => {
 
             <div className='menu'>
                <div className='options'>
-                  <p>
+                  {/* <p>
                      <b>Status: </b> Draft
                   </p>
                   <p>
                      <b>Visibility: </b> Public
-                  </p>
-                  <div className='file-container'>
-                     <input
-                        style={{display: 'none'}}
-                        type='file'
-                        id='file'
-                        ref={fileInputRef}
-                        onChange={(e) => setFile(e.target.files[0])}
-                     />
-
-                     <button
-                        className='file'
-                        onClick={handleButtonClick}>
-                        Upload Image
-                     </button>
-                  </div>
+                  </p> */}
 
                   <div className='item'>
                      <h1>Category</h1>
@@ -131,7 +127,39 @@ const Create = () => {
                   </div>
                </div>
                <div className='buttons'>
-                  <button>Save as a draft</button>
+                  <div className='file-container'>
+                     <input
+                        style={{display: 'none'}}
+                        type='file'
+                        id='file'
+                        ref={fileInputRef}
+                        onChange={handleSetFile}
+                     />
+
+                     <button
+                        className='file'
+                        onClick={handleFileUploadClick}>
+                        Upload Image
+                     </button>
+                     <div className='file-temp'>
+                        {file ? (
+                           <>
+                              <p> Selected file: {fileName} </p>
+                           </>
+                        ) : (
+                           <>
+                              <p>No file selected</p>
+                           </>
+                        )}
+                        <div className="file-clear">
+
+                        <i
+                           onClick={handleClearFile}
+                           className='clear-file ri-delete-bin-6-line'></i>
+                                                   </div>
+
+                     </div>
+                  </div>
                   <button onClick={handlePublish}>Publish</button>
                </div>
             </div>

@@ -82,11 +82,12 @@ const Home = () => {
                            />
                         </div>
                         <div className='content'>
-                           <Link to={`/post/${post.id}`}>
-                              <h3>{post?.title}</h3>
-                           </Link>
-                           <p className='desc'>{getText(post?.desc)}</p>
-
+                           <div className='text'>
+                              <Link to={`/post/${post.id}`}>
+                                 <h3>{post?.title}</h3>
+                              </Link>
+                              <p className='desc'>{getText(post?.desc)}</p>
+                           </div>
                            <UserBar data={post} />
                         </div>
                      </div>
