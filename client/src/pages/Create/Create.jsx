@@ -52,26 +52,30 @@ const Create = () => {
       e.preventDefault();
       const image = await upload();
 
-      try {
-         state
-            ? //if editing
-              await axios.put(`/posts/${state.id}`, {
-                 title,
-                 desc: value,
-                 cat,
-                 img: file ? image : `${state?.img}`,
-              })
-            : //if posting
-              await axios.post(`/posts/`, {
-                 title,
-                 desc: value,
-                 cat,
-                 img: file ? image : '',
-                 date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
-              });
-         navigate('/');
-      } catch (err) {
-         console.log(err);
+      if (title && value) {
+         try {
+            state
+               ? //if editing
+                 await axios.put(`/posts/${state.id}`, {
+                    title,
+                    desc: value,
+                    cat,
+                    img: file ? image : `${state?.img}`,
+                 })
+               : //if posting
+                 await axios.post(`/posts/`, {
+                    title,
+                    desc: value,
+                    cat,
+                    img: file ? image : '',
+                    date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
+                 });
+            navigate('/');
+         } catch (err) {
+            console.log(err);
+         }
+      } else {
+         alert('Post invalid. Please enter a title and your post content.')
       }
    };
 
@@ -139,7 +143,7 @@ const Create = () => {
                      <button
                         className='file'
                         onClick={handleFileUploadClick}>
-                        {state ?  'Upload New Image':'Upload Image'}
+                        {state ? 'Upload New Image' : 'Upload Image'}
                      </button>
                      <div className='file-temp'>
                         {file ? (
@@ -151,13 +155,11 @@ const Create = () => {
                               <p>No file selected</p>
                            </>
                         )}
-                        <div className="file-clear">
-
-                        <i
-                           onClick={handleClearFile}
-                           className='clear-file ri-delete-bin-6-line'></i>
-                                                   </div>
-
+                        <div className='file-clear'>
+                           <i
+                              onClick={handleClearFile}
+                              className='clear-file ri-delete-bin-6-line'></i>
+                        </div>
                      </div>
                   </div>
                   <button onClick={handlePublish}>Publish</button>
