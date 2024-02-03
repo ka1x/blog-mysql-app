@@ -139,7 +139,7 @@ const Create = () => {
                      <button
                         className='file'
                         onClick={handleFileUploadClick}>
-                        Upload Image
+                        {state ?  'Upload New Image':'Upload Image'}
                      </button>
                      <div className='file-temp'>
                         {file ? (

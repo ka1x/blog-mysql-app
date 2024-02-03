@@ -15,7 +15,7 @@ const Home = () => {
    const postsPerPage = 5;
    const startIndex = page * postsPerPage;
    const endIndex = startIndex + postsPerPage;
-   const maxPage = Math.floor(posts.length / postsPerPage - 1);
+   const maxPage = Math.floor(posts.length / postsPerPage);
 
    const category = useLocation().search;
 
@@ -75,21 +75,21 @@ const Home = () => {
                      <div
                         className={`post `}
                         key={i}>
-                        <div className='img'>
-                           <img
-                              src={`/uploads/${post?.img}`}
-                              alt=''
-                           />
-                        </div>
-                        <div className='content'>
-                           <div className='text'>
-                              <Link to={`/post/${post.id}`}>
-                                 <h3>{post?.title}</h3>
-                              </Link>
-                              <p className='desc'>{getText(post?.desc)}</p>
+                        <Link to={`/post/${post.id}`}>
+                           <div className='img'>
+                              <img
+                                 src={`/uploads/${post?.img}`}
+                                 alt=''
+                              />
                            </div>
-                           <UserBar data={post} />
-                        </div>
+                           <div className='content'>
+                              <div className='text'>
+                                 <h3>{post?.title}</h3>
+                                 <p className='desc'>{getText(post?.desc)}</p>
+                              </div>
+                              <UserBar data={post} />
+                           </div>
+                        </Link>
                      </div>
                   ))}
                </div>

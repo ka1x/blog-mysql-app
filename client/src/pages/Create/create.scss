@@ -26,6 +26,15 @@
       .options {
          width: 100%;
 
+         .cat {
+            margin: 0.5rem 0;
+            position: relative;
+            display: flex;
+            gap: 1rem;
+         }
+      }
+      .buttons {
+         width: 100%;
          .file-container {
             width: 100%;
             .file-temp {
@@ -43,15 +52,6 @@
                }
             }
          }
-         .cat {
-            margin: 0.5rem 0;
-            position: relative;
-            display: flex;
-            gap: 1rem;
-         }
-      }
-      .buttons {
-         width: 100%;
       }
       button {
          background: none;
