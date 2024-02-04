@@ -61,23 +61,28 @@ const Navbar = () => {
                      <img
                         src='/menu-svgrepo-com.png'
                         alt='Menu Categories'
+                        className='menu-mobile'
                         onClick={() => setOpenMenu(true)}
                         style={{height: 22, width: 22}}
                      />
                   )}
                   {currentUser ? (
                      <>
+                     <div >
+
                         <Link
                            className='link'
-                           to='/create'>
+                           to='/create' style={{marginRight:10}}>
                            <i className='i-loggedin ri-pen-nib-line'></i>
                         </Link>
                         <Link
                            className='link'
-                           to='/user/:id'>
+                           to={`/user/${currentUser.id}`}>
                            {/* Create */}
                            <i className='i-loggedin ri-user-3-line'></i>
                         </Link>
+                        </div>
+
                         <Link
                            className='link'
                            to='/'
