@@ -1,15 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './alertpopup.scss';
 
-const AlertPopup = ({message, onConfirm, onCancel, isVisible}) => {
+const AlertPopup = ({message, onConfirm, onCancel, showCancel}) => {
+   console.log(showCancel);
+
    return (
-		
       <div className='popup'>
-			<div className="overlay"></div>
+         <div className='overlay'></div>
          <div className='popup-content'>
             <p>{message}</p>
             <button onClick={onConfirm}>Confirm</button>
-            <button onClick={onCancel}>Cancel</button>
+            {showCancel == true && <button onClick={onCancel}>Cancel</button>}
          </div>
       </div>
    );

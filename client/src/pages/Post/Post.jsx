@@ -39,18 +39,12 @@ const Post = () => {
 
    //event handlers//
    const handleDelete = async () => {
-      // Display a confirmation dialog
-      // const isConfirmed = window.confirm('Are you sure you want to delete this post?');
-
-      // If the user confirms, proceed with the deletion
-      // if (isConfirmed) {
       try {
          await axios.delete(`/posts/${postId}`);
          navigate('/');
       } catch (err) {
          console.log(err);
       }
-      // }
    };
 
    const getText = (html) => {
@@ -95,13 +89,16 @@ const Post = () => {
                ) : (
                   <></>
                )}
-               {showAlert ? <AlertPopup
+            </div>
+            <Menu cat={post?.cat} />
+            {showAlert && (
+               <AlertPopup
                   message='Confirm delete?'
                   onConfirm={handleConfirm}
                   onCancel={handleCancel}
-               /> :<></>}
-            </div>
-            <Menu cat={post?.cat} />
+                  showCancel={true}
+               />
+            )}
          </div>
       </>
    );

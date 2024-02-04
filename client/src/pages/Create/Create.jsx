@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 import {categories} from '../../data/index.js';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import {Navbar} from '../../components/index.js';
+import {AlertPopup, Navbar} from '../../components/index.js';
 import './create.scss';
 import axios from 'axios';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -19,6 +19,8 @@ const Create = () => {
 
    const fileInputRef = useRef(null);
    const navigate = useNavigate();
+
+   const [openPopup, setOpenPopup] = useState(false);
 
    //event handlers//
    const handleFileUploadClick = () => {
@@ -48,6 +50,10 @@ const Create = () => {
       }
    };
 
+   const handleAlertConfirm = () => {
+      setOpenPopup(false);
+   };
+
    const handlePublish = async (e) => {
       e.preventDefault();
       const image = await upload();
@@ -75,7 +81,8 @@ const Create = () => {
             console.log(err);
          }
       } else {
-         alert('Post invalid. Please enter a title and your post content.');
+         setOpenPopup(true);
+         // alert('Post invalid. Please enter a title and your post content.');
       }
    };
 
@@ -103,13 +110,6 @@ const Create = () => {
 
             <div className='menu'>
                <div className='options'>
-                  {/* <p>
-                     <b>Status: </b> Draft
-                  </p>
-                  <p>
-                     <b>Visibility: </b> Public
-                  </p> */}
-
                   <div className='item'>
                      <h1>Category</h1>
 
@@ -169,7 +169,12 @@ const Create = () => {
                </div>
             </div>
          </div>
-         {/* <Footer></Footer> */}
+         {openPopup && (
+            <AlertPopup
+               message='Post invalid. Please enter a title and your post content.'
+               onConfirm={handleAlertConfirm}
+               showCancel={false}></AlertPopup>
+         )}
       </>
    );
 };
