@@ -74,6 +74,12 @@ const Navbar = () => {
                         </Link>
                         <Link
                            className='link'
+                           to='/user/:id'>
+                           {/* Create */}
+                           <i className='i-loggedin ri-user-3-line'></i>
+                        </Link>
+                        <Link
+                           className='link'
                            to='/'
                            onClick={logout}>
                            Logout
