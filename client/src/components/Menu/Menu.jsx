@@ -22,6 +22,12 @@ const Menu = ({cat, postId}) => {
       fetchPosts();
    }, [cat, postId]);
 
+   const handleLinkClick = () => {
+      // Scroll back to the top of the page
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+   };
+
    return (
       <div className='menu'>
          <h1>Other posts you may like</h1>
@@ -39,7 +45,8 @@ const Menu = ({cat, postId}) => {
                   <h2>{post?.title}</h2>
                   <Link
                      className='link'
-                     to={`/post/${post.id}`}>
+                     to={`/post/${post.id}`}
+                     onClick={handleLinkClick}>
                      <div className='btn-container'>
                         <button>Read More</button>
                      </div>
