@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {categories} from '../../data/index.js';
 import './navbar.scss';
@@ -8,6 +8,8 @@ import {useAuth} from '../../context/AuthContext.jsx';
 const Navbar = () => {
    const {currentUser} = useAuth();
    const {logout} = useAuth();
+
+   const [openMenu, setOpenMenu] = useState(false);
 
    const handleLogout = async () => {
       try {
@@ -29,8 +31,12 @@ const Navbar = () => {
                         to={'/'}>
                         BLOG
                      </Link>
-                  </div>{' '}
-                  <div className='navbar-links'>
+                  </div>
+
+                  <div className={openMenu ? 'navbar-links open' : 'navbar-links'}>
+                     <div className="links-close" onClick={()=>setOpenMenu(false)}>
+                     <i className="ri-close-line"></i>
+                     </div>
                      {categories.map((item, i) => (
                         <Link
                            key={i}
@@ -43,6 +49,13 @@ const Navbar = () => {
                </div>
 
                <div className='navbar-right'>
+                  {!openMenu && (
+                     <div className='menu-mobile'>
+                        <i
+                           className='ri-menu-line'
+                           onClick={() => setOpenMenu(true)}></i>
+                     </div>
+                  )}
                   {currentUser ? (
                      <>
                         <Link
@@ -67,10 +80,6 @@ const Navbar = () => {
                         </Link>
                      </>
                   )}
-
-                  {/* <div className='menu-mobile'>
-                     <i className='ri-menu-line'></i>
-                  </div> */}
                </div>
             </div>
          </nav>
