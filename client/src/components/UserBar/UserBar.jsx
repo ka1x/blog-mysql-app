@@ -26,7 +26,7 @@ const UserBar = ({data}) => {
          <div>
             <div className='user-pfp'>
                <img
-                  src={data?.userImg}
+                  src={data.userImg ? data.userImg : '/user-circle-svgrepo-com.png' }
                   alt=''
                />
             </div>
