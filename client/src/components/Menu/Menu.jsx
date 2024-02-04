@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {categories, posts} from '../../data/index.js';
 import {Link} from 'react-router-dom';
 import './menu.scss';
 import axios from 'axios';

@@ -49,16 +49,16 @@ const Home = () => {
       return () => clearTimeout(timeoutId);
    }, [page]);
 
-   const getText = (html) => {
+   const getText = (html, maxWords) => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const textContent = doc.body.textContent.trim(); // Remove leading/trailing whitespace
       const words = textContent.split(/\s+/); // Split into words
 
-      const maxWords = 100;
+      // const maxWords = 100;
       let truncatedText = words.slice(0, maxWords).join(' ');
 
       if (words.length > maxWords) {
-         truncatedText += ' ...';
+         truncatedText += '...';
       }
 
       return truncatedText;
@@ -84,8 +84,9 @@ const Home = () => {
                            </div>
                            <div className='content'>
                               <div className='text'>
-                                 <h3>{post?.title}</h3>
-                                 <p className='desc'>{getText(post?.desc)}</p>
+                                 {/* <h3>{post?.title}</h3> */}
+                                 <h3>{getText(post?.title, 8)}</h3>
+                                 <p className='desc'>{getText(post?.desc, 100)}</p>
                               </div>
                               <UserBar data={post} />
                            </div>
