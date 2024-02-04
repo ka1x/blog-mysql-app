@@ -1,3 +1,4 @@
 # SSL certificates and private keys
 *.crt
 *.key
+client/public/uploads/

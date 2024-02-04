@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Footer, Navbar, Menu, UserBar} from '../../components';
+import {Footer, Navbar, Menu, UserBar, AlertPopup} from '../../components';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import './post.scss';
 import {useAuth} from '../../context/AuthContext';
@@ -15,6 +15,8 @@ const Post = () => {
    const navigate = useNavigate();
    const {currentUser} = useAuth();
 
+   const [showAlert, setShowAlert] = useState(false);
+
    useEffect(() => {
       const fetchData = async () => {
          try {
@@ -27,20 +29,28 @@ const Post = () => {
       fetchData();
    }, [postId]);
 
+   const handleCancel = () => {
+      setShowAlert(false);
+   };
+   const handleConfirm = () => {
+      setShowAlert(false);
+      handleDelete();
+   };
+
    //event handlers//
    const handleDelete = async () => {
       // Display a confirmation dialog
-      const isConfirmed = window.confirm('Are you sure you want to delete this post?');
+      // const isConfirmed = window.confirm('Are you sure you want to delete this post?');
 
       // If the user confirms, proceed with the deletion
-      if (isConfirmed) {
-         try {
-            await axios.delete(`/posts/${postId}`);
-            navigate('/');
-         } catch (err) {
-            console.log(err);
-         }
+      // if (isConfirmed) {
+      try {
+         await axios.delete(`/posts/${postId}`);
+         navigate('/');
+      } catch (err) {
+         console.log(err);
       }
+      // }
    };
 
    const getText = (html) => {
@@ -57,13 +67,17 @@ const Post = () => {
 
                <UserBar data={post}></UserBar>
 
-               <div className='img-container'>
-                  <img
-                     className='post-img'
-                     src={`/uploads/${post?.img}`}
-                     alt=''
-                  />
-               </div>
+               {post.img ? (
+                  <div className='img-container'>
+                     <img
+                        className='post-img'
+                        src={`/uploads/${post?.img}`}
+                        alt=''
+                     />
+                  </div>
+               ) : (
+                  <>D</>
+               )}
                <p className='desc-container'>{getText(post?.desc)}</p>
                {currentUser?.username === post.username ? (
                   <>
@@ -75,12 +89,17 @@ const Post = () => {
                         </Link>
                         <i
                            className='ri-delete-bin-6-line'
-                           onClick={handleDelete}></i>
-                     </div>{' '}
+                           onClick={() => setShowAlert(true)}></i>
+                     </div>
                   </>
                ) : (
                   <></>
                )}
+               {showAlert ? <AlertPopup
+                  message='Confirm delete?'
+                  onConfirm={handleConfirm}
+                  onCancel={handleCancel}
+               /> :<></>}
             </div>
             <Menu cat={post?.cat} />
          </div>

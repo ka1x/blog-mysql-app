@@ -75,7 +75,7 @@ const Create = () => {
             console.log(err);
          }
       } else {
-         alert('Post invalid. Please enter a title and your post content.')
+         alert('Post invalid. Please enter a title and your post content.');
       }
    };
 
@@ -155,11 +155,14 @@ const Create = () => {
                               <p>No file selected</p>
                            </>
                         )}
-                        <div className='file-clear'>
-                           <i
-                              onClick={handleClearFile}
-                              className='clear-file ri-delete-bin-6-line'></i>
-                        </div>
+
+                        {file && (
+                           <div className='file-clear'>
+                              <i
+                                 onClick={handleClearFile}
+                                 className='clear-file ri-delete-bin-6-line'></i>
+                           </div>
+                        )}
                      </div>
                   </div>
                   <button onClick={handlePublish}>Publish</button>
