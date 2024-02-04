@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Footer, Navbar, UserBar} from '../../components';
+import {Footer, Loading, Navbar, UserBar} from '../../components';
 // import {posts} from '../../data/index.js';
 import {Link, useLocation} from 'react-router-dom';
 import './home.scss';
@@ -60,7 +60,6 @@ const Home = () => {
       if (words.length > maxWords) {
          truncatedText += '...';
       }
-
       return truncatedText;
    };
 
@@ -68,7 +67,7 @@ const Home = () => {
       return (
          <>
             {loading ? (
-               <div className='loading-spinner'>Loading...</div>
+              <Loading/>
             ) : (
                <div className={`home-posts ${animate ? 'active' : ''}`}>
                   {posts.slice(startIndex, endIndex).map((post, i) => (
