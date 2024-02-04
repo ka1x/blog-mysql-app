@@ -15,10 +15,10 @@ export const getUser = (req, res) => {
 
 export const getUserPosts = (req, res) => {
   const q = `
-	  SELECT p.id, u.id AS userId, u.firstname, u.lastname, u.username, p.title, p.desc, p.img, u.img AS userImg, p.cat, p.date
+	  SELECT p.id, p.title, p.desc, p.img, p.date
 	  FROM users u
-	  JOIN posts p ON u.id = p.id
-	  WHERE p.id = ?
+	  JOIN posts p ON u.id = p.uid
+	  WHERE u.id = ?
 	  ORDER BY p.date DESC
 	  LIMIT 3
 	`

@@ -4,6 +4,7 @@ import {Footer, Loading, Navbar, UserBar} from '../../components';
 import {Link, useLocation} from 'react-router-dom';
 import './home.scss';
 import axios from 'axios';
+import {getText} from '../../utils/getText';
 
 const Home = () => {
    const [posts, setPosts] = useState([]);
@@ -48,20 +49,6 @@ const Home = () => {
       // Clean up the timeout when the component unmounts or when the page changes again
       return () => clearTimeout(timeoutId);
    }, [page]);
-
-   const getText = (html, maxWords) => {
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      const textContent = doc.body.textContent.trim(); // Remove leading/trailing whitespace
-      const words = textContent.split(/\s+/); // Split into words
-
-      // const maxWords = 100;
-      let truncatedText = words.slice(0, maxWords).join(' ');
-
-      if (words.length > maxWords) {
-         truncatedText += '...';
-      }
-      return truncatedText;
-   };
 
    const renderPosts = () => {
       return (

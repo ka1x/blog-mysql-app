@@ -2,12 +2,12 @@
    display: grid;
    grid-template-columns: 1fr 2fr;
 
-	.sidebar {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-		height: 100%;
+   .sidebar {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
       .user-pfp {
          position: relative;
          height: 100%;
@@ -23,6 +23,59 @@
       }
    }
 
-   .content {
+   .user-content {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 15rem 0 0;
+
+      .page-title {
+         font-family: 'Bacasime Antique', serif;
+         font-size: 2.4rem;
+         width: 100%;
+         padding: 0.5rem 0;
+         border-bottom: 1px solid var(--accent-col);
+         margin: 1rem 0;
+         font-weight: 500;
+         text-align: end;
+      }
+      .posts {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         align-items: stretch;
+         position: relative;
+         gap: 2rem;
+         margin: 0 0 5rem 0;
+         .post {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+            margin: 1.5rem 0 0 0;
+            h3 {
+               font-family: 'Bacasime Antique', serif;
+               margin: 1rem 0 0 0;
+               font-size: 2rem;
+               font-weight: 500;
+            }
+            .desc {
+               margin: 0.5rem 0;
+               display: block;
+               font-size: 1rem;
+            }
+
+            .img {
+               position: relative;
+               width: 100%;
+               padding-bottom: 100%; /* Creates a square aspect ratio based on width */
+               height: 100%;
+               img {
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+               }
+            }
+         }
+      }
    }
 }

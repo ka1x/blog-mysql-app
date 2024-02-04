@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {useAuth} from '../../context/AuthContext';
 import './user.scss';
-import {Loading, Navbar,Menu} from '../../components';
+import {Loading, Navbar, Menu} from '../../components';
 import axios from 'axios';
+import {getText} from '../../utils/getText';
 
 const User = () => {
    const [loading, setLoading] = useState(true);
@@ -66,8 +67,29 @@ const User = () => {
                      </div>
                   </div>
 
-                  <div className='content'>
-                     <Menu></Menu>
+                  <div className='user-content'>
+                     <h3 className='page-title'> Latest posts </h3>
+                     <div className='posts'>
+                        {userPosts?.map((post, i) => (
+                           <Link
+                              to={`/post/${post.id}`}
+                              className='post'
+                              key={i}>
+                              <div className='img'>
+                                 <img
+                                    src={post.img ? `/uploads/${post.img}` : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'}
+                                    alt=''
+                                 />
+                              </div>
+                              <div className='content'>
+                                 <div className='text'>
+                                    <h3>{post?.title}</h3>
+                                    <p className='desc'>{getText(post?.desc, 50)}</p>
+                                 </div>
+                              </div>
+                           </Link>
+                        ))}
+                     </div>
                   </div>
                </div>
             </>
