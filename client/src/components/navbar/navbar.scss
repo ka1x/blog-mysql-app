@@ -26,8 +26,8 @@
       .navbar-links {
          @include flexCenter();
          gap: 2rem;
-         .links-close{
-            display: none
+         .links-close {
+            display: none;
          }
       }
 
@@ -81,18 +81,19 @@
             width: 50%;
             z-index: 9;
             text-transform: uppercase;
-
+            box-shadow: -3px 0px 12px 0px rgba(0, 0, 0, 0.05);
             //to animate the menu:
             transform: translateX(100%);
             transition: transform 0.5s ease-in-out;
 
-           
             &.open {
                transform: translateX(0);
             }
 
-            .links-close{
-               display: block;  
+            .links-close {
+               display: block;
+               font-size: 1.2em;
+               margin-bottom: 0.5rem;
             }
             a {
                color: black;
@@ -117,6 +118,18 @@
          z-index: 99;
          i {
             font-size: 1.3rem;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 450px) {
+   .navbar {
+      .navbar-content {
+
+         .navbar-links {
+
+            width: 66%;
          }
       }
    }

@@ -34,14 +34,17 @@ const Navbar = () => {
                   </div>
 
                   <div className={openMenu ? 'navbar-links open' : 'navbar-links'}>
-                     <div className="links-close" onClick={()=>setOpenMenu(false)}>
-                     <i className="ri-close-line"></i>
+                     <div
+                        className='links-close'
+                        onClick={() => setOpenMenu(false)}>
+                        <i className='ri-close-line'></i>
                      </div>
                      {categories.map((item, i) => (
                         <Link
                            key={i}
                            to={`/?cat=${item.linkname}`}
-                           style={{textTransform: 'capitalize'}}>
+                           style={{textTransform: 'capitalize'}}
+                           onClick={() => setOpenMenu(false)}>
                            {item.title}
                         </Link>
                      ))}
@@ -50,11 +53,17 @@ const Navbar = () => {
 
                <div className='navbar-right'>
                   {!openMenu && (
-                     <div className='menu-mobile'>
-                        <i
-                           className='ri-menu-line'
-                           onClick={() => setOpenMenu(true)}></i>
-                     </div>
+                     // <div className='menu-mobile'>
+                     //    <i
+                     //       className='ri-menu-fill'
+                     //       onClick={() => setOpenMenu(true)}></i>
+                     // </div>
+                     <img
+                        src='/menu-svgrepo-com.png'
+                        alt='Menu Categories'
+                        onClick={() => setOpenMenu(true)}
+                        style={{height: 22, width: 22}}
+                     />
                   )}
                   {currentUser ? (
                      <>
