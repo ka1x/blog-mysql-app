@@ -67,7 +67,7 @@ const Home = () => {
       return (
          <>
             {loading ? (
-              <Loading/>
+               <Loading />
             ) : (
                <div className={`home-posts ${animate ? 'active' : ''}`}>
                   {posts.slice(startIndex, endIndex).map((post, i) => (
@@ -77,7 +77,7 @@ const Home = () => {
                         <Link to={`/post/${post.id}`}>
                            <div className='img'>
                               <img
-                                 src={`/uploads/${post?.img}`}
+                                 src={post.img ? `/uploads/${post.img}` : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'}
                                  alt=''
                               />
                            </div>

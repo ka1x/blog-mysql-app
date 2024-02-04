@@ -67,7 +67,7 @@ const Post = () => {
 
                      <UserBar data={post}></UserBar>
 
-                     {post.img ? (
+                     {post.img && (
                         <div className='img-container'>
                            <img
                               className='post-img'
@@ -75,8 +75,6 @@ const Post = () => {
                               alt=''
                            />
                         </div>
-                     ) : (
-                        <>D</>
                      )}
                      <p className='desc-container'>{getText(post?.desc)}</p>
                      {currentUser?.username === post.username ? (
