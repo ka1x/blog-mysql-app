@@ -3,20 +3,24 @@ import {Link} from 'react-router-dom';
 import './menu.scss';
 import axios from 'axios';
 
-const Menu = ({cat}) => {
+const Menu = ({cat, postId}) => {
    const [posts, setPosts] = useState([]);
 
    useEffect(() => {
       const fetchPosts = async () => {
          try {
             const res = await axios.get(`/posts/?cat=${cat}`);
-            setPosts(res.data);
+            const allPosts = res.data;
+            const filteredPosts = allPosts.filter((post) => post.id !== postId);
+
+            setPosts(filteredPosts);
+            // setPosts(res.data);
          } catch (error) {
             console.log(error.message);
          }
       };
       fetchPosts();
-   }, [cat]);
+   }, [cat, postId]);
 
    return (
       <div className='menu'>

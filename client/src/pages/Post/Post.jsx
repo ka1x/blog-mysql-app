@@ -94,7 +94,7 @@ const Post = () => {
                         <></>
                      )}
                   </div>
-                  <Menu cat={post?.cat} />
+                  <Menu cat={post?.cat} postId={post.id}/>
                   {showAlert && (
                      <AlertPopup
                         message='Confirm delete?'
