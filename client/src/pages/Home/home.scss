@@ -5,10 +5,6 @@
    @include flexCenter();
    padding: 2rem 10rem 1rem 10em;
 
-
-   .home-posts.active {
-      animation: slideDown 1s ease;
-   }
    .home-posts {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -17,6 +13,9 @@
       gap: 2rem;
       width: 100%;
 
+      &.active {
+         animation: slideDown 1s ease;
+      }
       .post:nth-of-type(1) {
          grid-column: 1/3;
          grid-row: 1/3;
@@ -58,7 +57,7 @@
       .img {
          position: relative;
          width: 100%;
-         padding-bottom: 100%; 
+         padding-bottom: 100%;
          img {
             position: absolute;
             width: 100%;
@@ -76,7 +75,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: .5rem 0 0 0;
+            padding: 0.5rem 0 0 0;
             h3 {
                font-family: 'Bacasime Antique', serif;
                font-size: 1.3rem;

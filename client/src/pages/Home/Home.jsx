@@ -38,8 +38,7 @@ const Home = () => {
       setAnimate(true);
       setLoading(true);
 
-      // After the animation duration, reset the animate state
-      const animationDuration = 500;
+      const animationDuration = 200;
       const timeoutId = setTimeout(() => {
          setLoading(false);
          setAnimate(false);
@@ -47,7 +46,7 @@ const Home = () => {
 
       // Clean up the timeout when the component unmounts or when the page changes again
       return () => clearTimeout(timeoutId);
-   }, [page]);
+   }, [category, page]);
 
    const renderPosts = () => {
       return (
