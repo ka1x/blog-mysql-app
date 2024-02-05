@@ -31,7 +31,7 @@ const UserBar = ({data}) => {
          <Link to={`/user/${data.userId}`}>
             <div className='user-pfp'>
                <img
-                  src={data.userImg ? data.userImg : '/user-circle-svgrepo-com.png'}
+                  src={data.userImg ? `/uploads/${data.userImg}` : '/user-circle-svgrepo-com.png'}
                   alt=''
                />
             </div>

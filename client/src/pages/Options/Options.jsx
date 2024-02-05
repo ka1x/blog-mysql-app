@@ -18,6 +18,7 @@ const Options = () => {
    const {logout} = useAuth();
 
    const [showAlert, setShowAlert] = useState(false);
+   const [error, setError] = useState(null);
 
    const handleChange = (e) => {
       setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
@@ -35,14 +36,33 @@ const Options = () => {
    };
 
    // profile picture submission //
+
+   const upload = async () => {
+      try {
+         const formData = new FormData();
+         formData.append('file', file);
+         const res = await axios.post('/upload', formData);
+         return res.data;
+      } catch (error) {
+         console.log(error);
+      }
+   };
+
    const handleImageSubmit = async (e) => {
       e.preventDefault();
-
+      const image = await upload();
       try {
-         console.log(file);
+         await axios.put(`/user/${state.id}/photo`, {
+            img: file ? image : `${state?.img}`,
+         });
+         navigate(`/user/${currentUser.id}`);
       } catch (error) {
          setError(error.response.data);
       }
+   };
+
+   const handleNavigate = async () => {
+      navigate(`/user/${currentUser.id}`);
    };
 
    // user deletion //
@@ -58,8 +78,8 @@ const Options = () => {
          await axios.delete(`/user/${currentUser.id}`);
          await logout();
          navigate('/');
-      } catch (err) {
-         console.log(err);
+      } catch (error) {
+         console.log(error);
       }
    };
 
@@ -92,22 +112,19 @@ const Options = () => {
                      value='Submit'
                      className='form-btn'
                   />
+                  {error && <p className='error'>{error}</p>}
                </form>
                <br />
-               <form
-                  onSubmit={handleImageSubmit}
-                  className='form'>
+
+               <div className='form'>
                   <h4>Upload Profile Picture</h4>
 
                   <FileInput
                      state={state}
                      file={file}
                      setFile={setFile}></FileInput>
-                  <input
-                     type='submit'
-                     className='form-btn'
-                  />
-               </form>
+                  <button onClick={handleImageSubmit}>Submit</button>
+               </div>
                <br />
                <div className='form'>
                   <h4>Account Deletion</h4>

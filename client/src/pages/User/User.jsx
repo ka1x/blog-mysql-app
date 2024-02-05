@@ -41,7 +41,6 @@ const User = () => {
 
       setLoading(false);
    }, [profileId]);
-   
 
    return (
       <>
@@ -56,7 +55,7 @@ const User = () => {
                      <h3>Profile</h3>
                      <div className='user-pfp'>
                         <img
-                           src={user?.img ? user?.img : '/user-circle-svgrepo-com.png'}
+                           src={user?.img ? `/uploads/${user?.img}` : '/user-circle-svgrepo-com.png'}
                            alt=''
                         />
                      </div>
@@ -65,9 +64,11 @@ const User = () => {
                      </div>
                      {user?.id === currentUser.id && (
                         <>
-                        <Link to={'/options'} state={user}>
-                           <button className='options-btn'>Options</button>
-                        </Link>
+                           <Link
+                              to={'/options'}
+                              state={user}>
+                              <button className='options-btn'>Options</button>
+                           </Link>
                         </>
                      )}
                   </div>

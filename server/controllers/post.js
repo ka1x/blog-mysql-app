@@ -74,6 +74,7 @@ export const updatePost = (req, res) => {
     })
   })
 }
+
 export const deletePost = (req, res) => {
   const token = req.cookies.access_token
   if (!token) return res.status(401).json('Not authenticated!')
@@ -92,16 +93,21 @@ export const deletePost = (req, res) => {
     })
   })
 }
-
 const deleteOrphanedImages = () => {
-  const selectQuery = 'SELECT `id`, `img` FROM posts'
+  const selectQuery =
+    'SELECT posts.`id` AS post_id, posts.`img` AS post_img, users.`img` AS user_img FROM posts LEFT JOIN users ON posts.uid = users.id'
   db.query(selectQuery, (err, rows) => {
     if (err) {
-      console.error('Error retrieving posts:', err)
+      console.error('Error retrieving posts and users:', err)
       return
     }
 
-    const imagePathsInDatabase = rows.map(row => row.img)
+    const imagePathsInDatabase = [
+      ...new Set([
+        ...rows.map(row => row.post_img),
+        ...rows.map(row => row.user_img)
+      ])
+    ]
 
     // Read the directory containing your uploaded images
     const imageUploadsPath = '../client/public/uploads'
