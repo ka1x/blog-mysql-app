@@ -7,12 +7,10 @@ export const getPosts = (req, res) => {
     ? `SELECT p.id, p.title, p.desc, p.img, p.cat, p.date, p.uid as userId, u.img AS userImg, u.firstname, u.lastname
 		FROM posts p
 		JOIN users u ON p.uid = u.id
-		WHERE p.cat = ?
-    ORDER BY p.date DESC`
+		WHERE p.cat = ?`
     : `SELECT p.id, p.title, p.desc, p.img, p.cat, p.date, p.uid as userId, u.img AS userImg, u.firstname, u.lastname
 		FROM posts p
-		JOIN users u ON p.uid = u.id
-    ORDER BY p.date DESC`
+		JOIN users u ON p.uid = u.id`
 
   db.query(q, [req.query.cat], (err, data) => {
     if (err) return res.status(500).send(err)
