@@ -41,7 +41,6 @@ const User = () => {
 
       setLoading(false);
    }, [profileId]);
-   
 
    return (
       <>
@@ -65,9 +64,7 @@ const User = () => {
                      </div>
                      {user?.id === currentUser.id && (
                         <>
-                        <Link to={'/options'} state={user}>
                            <button className='options-btn'>Options</button>
-                        </Link>
                         </>
                      )}
                   </div>

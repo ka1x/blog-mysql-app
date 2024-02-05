@@ -2,7 +2,7 @@ import { db } from '../db.js'
 import jwt from 'jsonwebtoken'
 
 export const getUser = (req, res) => {
-  const q = 'SELECT firstname, lastname, img, id FROM users WHERE id = ? '
+  const q = 'SELECT firstname, lastname, img FROM users WHERE id = ? '
 
   db.query(q, [req.params.id], (err, data) => {
     if (err) {
