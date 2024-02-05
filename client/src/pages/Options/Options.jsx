@@ -15,6 +15,7 @@ const Options = () => {
 
    const [showAlert, setShowAlert] = useState(false);
    const [error, setError] = useState(null);
+   const [success, setSuccess] = useState(null);
 
    const [file, setFile] = useState(null);
    const state = useLocation().state;
@@ -24,8 +25,13 @@ const Options = () => {
    //password change//
    const handlePasswordSubmit = async (e) => {
       e.preventDefault();
+
+      setSuccess(null)
+      setError(null);
+
       try {
          const response = await axios.put(`/user/${currentUser.id}/password`, inputs, {});
+         setSuccess(response?.data);
       } catch (error) {
          console.error('Error setting new password:', error.response?.data || error.message);
          setError(error.response?.data || error.message); // Set an error state or handle the error accordingly
@@ -36,7 +42,6 @@ const Options = () => {
    };
 
    // profile picture submission //
-
    const upload = async () => {
       try {
          const formData = new FormData();
@@ -47,7 +52,6 @@ const Options = () => {
          console.log(error);
       }
    };
-
    const handleImageSubmit = async (e) => {
       e.preventDefault();
       const image = await upload();
@@ -111,6 +115,7 @@ const Options = () => {
                      className='form-btn'
                   />
                   {error && <p className='error'>{error}</p>}
+                  {success && <p className='good err'>{success}</p>}
                </form>
                <br />
 
