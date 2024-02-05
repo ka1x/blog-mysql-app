@@ -22,8 +22,35 @@ const Options = () => {
    const {logout} = useAuth();
 
    const handlePasswordSubmit = async () => {};
-   const handleChange = async () => {};
-   const handleImageSubmit = async () => {};
+   const handleChange = (e) => {
+      setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
+   };
+
+   // profile picture submission //
+
+   const upload = async () => {
+      try {
+         const formData = new FormData();
+         formData.append('file', file);
+         const res = await axios.post('/upload', formData);
+         return res.data;
+      } catch (error) {
+         console.log(error);
+      }
+   };
+
+   const handleImageSubmit = async (e) => {
+      e.preventDefault();
+      const image = await upload();
+      try {
+         await axios.put(`/user/${state.id}/photo`, {
+            img: file ? image : `${state?.img}`,
+         });
+         navigate(`/user/${currentUser.id}`);
+      } catch (error) {
+         setError(error.response.data);
+      }
+   };
 
    // user deletion //
    const handleConfirm = () => {
