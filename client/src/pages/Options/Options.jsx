@@ -19,12 +19,30 @@ const Options = () => {
    const [file, setFile] = useState(null);
    const state = useLocation().state;
    const navigate = useNavigate();
+   const {logout} = useAuth();
 
    const handlePasswordSubmit = async () => {};
    const handleChange = async () => {};
    const handleImageSubmit = async () => {};
-   const handleConfirm = async () => {};
-   const handleCancel = async () => {};
+
+   // user deletion //
+   const handleConfirm = () => {
+      setShowAlert(false);
+      handleUserDelete();
+   };
+   const handleCancel = () => {
+      setShowAlert(false);
+   };
+   const handleUserDelete = async () => {
+      try {
+         await axios.delete(`/user/${currentUser.id}`);
+         await logout();
+         await navigate('/');
+      } catch (error) {
+         console.log(error);
+      } finally {
+      }
+   };
 
    return (
       <>
