@@ -16,8 +16,31 @@ const User = () => {
    const location = useLocation();
    const profileId = location.pathname.split('/')[2];
 
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const res = await axios.get(`/user/${profileId}`);
+            setUser(res.data);
+         } catch (err) {
+            console.log(err);
+         }
+      };
 
-	
+      const fetchPosts = async () => {
+         try {
+            const res = await axios.get(`/user/${profileId}/posts`);
+            setUserPosts(res.data);
+         } catch (err) {
+            console.log(err);
+         }
+      };
+
+      fetchData();
+      fetchPosts();
+
+      setLoading(false);
+   }, [profileId]);
+
    return (
       <>
          {loading ? (

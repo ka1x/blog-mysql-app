@@ -53,6 +53,11 @@ const Navbar = () => {
 
                <div className='navbar-right'>
                   {!openMenu && (
+                     // <div className='menu-mobile'>
+                     //    <i
+                     //       className='ri-menu-fill'
+                     //       onClick={() => setOpenMenu(true)}></i>
+                     // </div>
                      <img
                         src='/menu-svgrepo-com.png'
                         alt='Menu Categories'

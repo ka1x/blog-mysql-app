@@ -59,7 +59,6 @@
       display: none;
       pointer-events: none;
       z-index: -99;
-      opacity: 0;
    }
 }
 
@@ -117,7 +116,9 @@
          display: block;
          pointer-events: all;
          z-index: 99;
-         
+         i {
+            font-size: 1.3rem;
+         }
       }
    }
 }
@@ -125,7 +126,9 @@
 @media screen and (max-width: 450px) {
    .navbar {
       .navbar-content {
+
          .navbar-links {
+
             width: 66%;
          }
       }
