@@ -7,9 +7,11 @@
       justify-content: start;
       flex-direction: column;
       align-items: center;
-      height: 100%;
       gap: 2rem;
       padding: 3rem 0;
+      margin: auto;
+      width: 33%;
+      position: fixed;
 
       h3 {
          font-size: 1.5rem;
@@ -39,6 +41,7 @@
       display: flex;
       flex-direction: column;
       padding: 2rem 15rem 0 0;
+      grid-column: 2/-2;
 
       .page-title {
          // font-family: 'Bacasime Antique', serif;

@@ -5,6 +5,7 @@ import './user.scss';
 import {Loading, Navbar, Menu} from '../../components';
 import axios from 'axios';
 import {getText} from '../../utils/getText';
+import Options from '../Options/Options';
 
 const User = () => {
    const [loading, setLoading] = useState(true);
@@ -40,6 +41,7 @@ const User = () => {
 
       setLoading(false);
    }, [profileId]);
+   
 
    return (
       <>
@@ -63,7 +65,9 @@ const User = () => {
                      </div>
                      {user?.id === currentUser.id && (
                         <>
+                        <Link to={'/options'}>
                            <button className='options-btn'>Options</button>
+                        </Link>
                         </>
                      )}
                   </div>

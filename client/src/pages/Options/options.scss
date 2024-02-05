@@ -1,0 +1,70 @@
+@import '../../styles/mixins.scss';
+
+.options-page-container {
+   @include flexCenter();
+   height: 100vh;
+   width: 100%;
+   position: relative;
+   gap: 4rem;
+   position: relative;
+
+   .form-container {
+      background-color: var(--cardColor);
+      border-radius: 1rem;
+      padding: 2rem 1rem;
+      animation: slideDown 1s;
+
+		
+		h3 {
+			margin: 0.3rem 0 1.3rem 0;
+			font-family: 'Bacasime Antique', serif;
+			font-size: 2rem;
+			border-bottom: 1px solid var(--accent-col);
+			width: 100%;
+			text-align: center;
+			padding: 0 0 1rem 0;
+		}
+
+      .form {
+         @include flexCenter();
+         flex-direction: column;
+         gap: 1rem;
+         input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+         }
+
+         > div {
+            @include flexCenter();
+            gap: 1rem;
+         }
+
+         span {
+            font-size: 0.9rem;
+            margin: 0.5rem 0 0 0;
+         }
+
+         .input {
+            border: none;
+            outline: none;
+            background-color: var(--inputColor);
+            border-radius: 8px;
+            padding: 0.6rem;
+            flex: 1;
+         }
+
+         .form-btn {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid black;
+            background: transparent;
+         }
+
+         .error {
+            font-size: 0.8rem;
+            color: red;
+            text-transform: uppercase;
+         }
+      }
+   }
+}

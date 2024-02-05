@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Routes, Route, Outlet} from 'react-router-dom';
-import {Create, Home, Login, Post, Register, User} from './pages';
+import {Create, Home, Login, Options, Post, Register, User} from './pages';
 
 function App() {
    return (
@@ -29,6 +29,10 @@ function App() {
             <Route
                path='/user/:id'
                element={<User />}
+            />
+            <Route
+               path='/options'
+               element={<Options />}
             />
          </Routes>
       </div>
