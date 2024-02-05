@@ -53,12 +53,13 @@
             padding: 0.5rem 1rem;
             border: 1px solid black;
          }
-         .menu-mobile {
-            display: none;
-            pointer-events: none;
-            z-index: -99;
-         }
       }
+   }
+   .menu-mobile {
+      display: none;
+      pointer-events: none;
+      z-index: -99;
+      opacity: 0;
    }
 }
 
@@ -116,9 +117,7 @@
          display: block;
          pointer-events: all;
          z-index: 99;
-         i {
-            font-size: 1.3rem;
-         }
+         
       }
    }
 }
