@@ -9,9 +9,6 @@ export const AuthContextProvider = ({children}) => {
    const initialCurrentUser = Cookies.get('user');
    const [currentUser, setCurrentUser] = useState(initialCurrentUser ? JSON.parse(initialCurrentUser) : null);
 
-   // useEffect(() => {
-   //    console.log(currentUser);
-   // }, [currentUser]);
 
    const login = async (inputs) => {
       const res = await axios.post('/auth/login', inputs);

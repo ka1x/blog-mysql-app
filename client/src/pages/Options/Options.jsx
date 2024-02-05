@@ -21,7 +21,16 @@ const Options = () => {
    const navigate = useNavigate();
    const {logout} = useAuth();
 
-   const handlePasswordSubmit = async () => {};
+   //password change//
+   const handlePasswordSubmit = async (e) => {
+      e.preventDefault();
+      try {
+         const response = await axios.put(`/user/${currentUser.id}/password`, inputs, {});
+      } catch (error) {
+         console.error('Error setting new password:', error.response?.data || error.message);
+         setError(error.response?.data || error.message); // Set an error state or handle the error accordingly
+      }
+   };
    const handleChange = (e) => {
       setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
    };
