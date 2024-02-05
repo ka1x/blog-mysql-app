@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Footer, Loading, Navbar, UserBar} from '../../components';
-// import {posts} from '../../data/index.js';
 import {Link, useLocation} from 'react-router-dom';
 import './home.scss';
 import axios from 'axios';
