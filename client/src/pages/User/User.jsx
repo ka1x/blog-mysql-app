@@ -41,10 +41,6 @@ const User = () => {
       setLoading(false);
    }, [profileId]);
 
-   useEffect(() => {
-      // console.log(user.lastname);
-   }, [user]);
-
    return (
       <>
          {loading ? (
@@ -65,6 +61,11 @@ const User = () => {
                      <div className='name-container'>
                         <p style={{textTransform: 'uppercase'}}>{` ${user?.firstname} ${user?.lastname}`}</p>
                      </div>
+                     {user?.id === currentUser.id && (
+                        <>
+                           <button className='options-btn'>Options</button>
+                        </>
+                     )}
                   </div>
 
                   <div className='user-content'>

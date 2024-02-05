@@ -9,10 +9,12 @@
       align-items: center;
       height: 100%;
       gap: 2rem;
-      margin: 3rem 0;
-      h3{
-         font-size: 1.5rem ;
-font-weight: 500;      }
+      padding: 3rem 0;
+
+      h3 {
+         font-size: 1.5rem;
+         font-weight: 500;
+      }
       .user-pfp {
          position: relative;
          // height: 100%;
@@ -25,6 +27,11 @@ font-weight: 500;      }
             object-fit: cover;
             border-radius: 50%;
          }
+      }
+      .options-btn {
+         padding: 0.5rem 1rem;
+         border: 1px solid black;
+         background: transparent;
       }
    }
 
