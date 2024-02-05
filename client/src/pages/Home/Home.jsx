@@ -16,7 +16,8 @@ const Home = () => {
    const postsPerPage = 5;
    const startIndex = page * postsPerPage;
    const endIndex = startIndex + postsPerPage;
-   const maxPage = Math.floor(posts.length / postsPerPage);
+   const maxPage = Math.ceil(posts.length / postsPerPage) - 1;
+   
 
    const category = useLocation().search;
 
@@ -40,7 +41,7 @@ const Home = () => {
       setLoading(true);
 
       // After the animation duration, reset the animate state
-      const animationDuration = 500; // 1 second
+      const animationDuration = 500;
       const timeoutId = setTimeout(() => {
          setLoading(false);
          setAnimate(false);
@@ -59,7 +60,7 @@ const Home = () => {
                <div className={`home-posts ${animate ? 'active' : ''}`}>
                   {posts.slice(startIndex, endIndex).map((post, i) => (
                      <div
-                        className={`post `}
+                        className={`post`}
                         key={i}>
                         <Link to={`/post/${post.id}`}>
                            <div className='img'>
