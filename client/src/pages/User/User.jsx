@@ -42,7 +42,7 @@ const User = () => {
    }, [profileId]);
 
    useEffect(() => {
-      console.log(user);
+      // console.log(user.lastname);
    }, [user]);
 
    return (

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './userbar.scss';
 import {format} from 'date-fns';
+import {Link} from 'react-router-dom';
 
 const UserBar = ({data}) => {
    const renderDate = () => {
@@ -21,12 +22,16 @@ const UserBar = ({data}) => {
       }
    };
 
+   useEffect(() => {
+      console.log(data);
+   }, [data]);
+
    return (
       <div className='user'>
-         <div>
+         <Link to={`/user/${data.userId}`}>
             <div className='user-pfp'>
                <img
-                  src={data.userImg ? data.userImg : '/user-circle-svgrepo-com.png' }
+                  src={data.userImg ? data.userImg : '/user-circle-svgrepo-com.png'}
                   alt=''
                />
             </div>
@@ -34,7 +39,7 @@ const UserBar = ({data}) => {
                <p style={{textTransform: 'uppercase'}}>{` ${data?.firstname} ${data?.lastname}`}</p>
                {renderDate()}
             </div>
-         </div>
+         </Link>
 
          <div className='share'>
             <span>1k shares</span>
