@@ -2,7 +2,7 @@ import {useAuth} from '../../context/AuthContext';
 import './options.scss';
 import '../Login/login.scss';
 import React, {useState} from 'react';
-import {AlertPopup, FileInput} from '../../components';
+import {AlertPopup, FileInput, GoBack} from '../../components';
 import {useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
@@ -61,9 +61,6 @@ const Options = () => {
       }
    };
 
-   const handleNavigate = async () => {
-      navigate(`/user/${currentUser.id}`);
-   };
 
    // user deletion //
    const handleConfirm = () => {
@@ -83,9 +80,12 @@ const Options = () => {
       }
    };
 
+
+
    return (
       <>
          <div className='options-page-container'>
+         <GoBack/>
             <div className='form-container'>
                <h3>Options</h3>
 

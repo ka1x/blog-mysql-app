@@ -1,0 +1,13 @@
+.go-back {
+   position: absolute;
+   top: 0;
+   left: 0;
+   margin: 2rem;
+   font-size: 2rem;
+   transition: 0.3s all ease-in-out;
+
+   &:hover {
+      transition: 0.8s all ease-in-out;
+      transform: translateX(-2px);
+   }
+}

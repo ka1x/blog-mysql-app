@@ -16,7 +16,6 @@ const Home = () => {
    const startIndex = page * postsPerPage;
    const endIndex = startIndex + postsPerPage;
    const maxPage = Math.ceil(posts.length / postsPerPage) - 1;
-   
 
    const category = useLocation().search;
 
@@ -68,15 +67,17 @@ const Home = () => {
                                  alt=''
                               />
                            </div>
-                           <div className='content'>
+                        </Link>
+                        <div className='content'>
+                           <Link to={`/post/${post.id}`}>
                               <div className='text'>
                                  {/* <h3>{post?.title}</h3> */}
                                  <h3>{getText(post?.title, 7)}</h3>
                                  <p className='desc'>{getText(post?.desc, 100)}</p>
                               </div>
-                              <UserBar data={post} />
-                           </div>
-                        </Link>
+                           </Link>
+                           <UserBar data={post} />
+                        </div>
                      </div>
                   ))}
                </div>
