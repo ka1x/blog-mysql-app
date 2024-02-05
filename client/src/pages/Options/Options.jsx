@@ -2,8 +2,9 @@ import {useAuth} from '../../context/AuthContext';
 import './options.scss';
 import '../Login/login.scss';
 import React, {useState} from 'react';
-import {FileInput} from '../../components';
-import {useLocation} from 'react-router-dom';
+import {AlertPopup, FileInput} from '../../components';
+import {useLocation, useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 const Options = () => {
    const {currentUser} = useAuth();
@@ -13,11 +14,16 @@ const Options = () => {
    });
    const [file, setFile] = useState(null);
    const state = useLocation().state;
+   const navigate = useNavigate();
+   const {logout} = useAuth();
+
+   const [showAlert, setShowAlert] = useState(false);
 
    const handleChange = (e) => {
       setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
    };
 
+   //password change//
    const handlePasswordSubmit = async (e) => {
       e.preventDefault();
 
@@ -28,6 +34,7 @@ const Options = () => {
       }
    };
 
+   // profile picture submission //
    const handleImageSubmit = async (e) => {
       e.preventDefault();
 
@@ -37,6 +44,25 @@ const Options = () => {
          setError(error.response.data);
       }
    };
+
+   // user deletion //
+   const handleConfirm = () => {
+      setShowAlert(false);
+      handleUserDelete();
+   };
+   const handleCancel = () => {
+      setShowAlert(false);
+   };
+   const handleUserDelete = async () => {
+      try {
+         await axios.delete(`/user/${currentUser.id}`);
+         await logout();
+         navigate('/');
+      } catch (err) {
+         console.log(err);
+      }
+   };
+
    return (
       <>
          <div className='options-page-container'>
@@ -83,11 +109,19 @@ const Options = () => {
                   />
                </form>
                <br />
-               <form className='form'>
+               <div className='form'>
                   <h4>Account Deletion</h4>
-                  <button> Delete Account</button>
-               </form>
+                  <button onClick={() => setShowAlert(true)}> Delete Account</button>
+               </div>
             </div>
+            {showAlert && (
+               <AlertPopup
+                  message='Are you sure you want to delete your account?'
+                  onConfirm={handleConfirm}
+                  onCancel={handleCancel}
+                  showCancel={true}
+               />
+            )}
          </div>
       </>
    );
