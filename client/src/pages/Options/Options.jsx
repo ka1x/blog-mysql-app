@@ -2,6 +2,8 @@ import {useAuth} from '../../context/AuthContext';
 import './options.scss';
 import '../Login/login.scss';
 import React, {useState} from 'react';
+import {FileInput} from '../../components';
+import {useLocation} from 'react-router-dom';
 
 const Options = () => {
    const {currentUser} = useAuth();
@@ -9,6 +11,8 @@ const Options = () => {
       oldPass: '',
       newPass: '',
    });
+   const [file, setFile] = useState(null);
+   const state = useLocation().state;
 
    const handleChange = (e) => {
       setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
@@ -18,8 +22,17 @@ const Options = () => {
       e.preventDefault();
 
       try {
-			console.log(inputs)
-			
+         console.log(inputs);
+      } catch (error) {
+         setError(error.response.data);
+      }
+   };
+
+   const handleImageSubmit = async (e) => {
+      e.preventDefault();
+
+      try {
+         console.log(file);
       } catch (error) {
          setError(error.response.data);
       }
@@ -48,7 +61,31 @@ const Options = () => {
                      className='new-pass'
                      onChange={handleChange}
                   />
-						<input type="submit" value="Submit" className='form-btn' />
+                  <input
+                     type='submit'
+                     value='Submit'
+                     className='form-btn'
+                  />
+               </form>
+               <br />
+               <form
+                  onSubmit={handleImageSubmit}
+                  className='form'>
+                  <h4>Upload Profile Picture</h4>
+
+                  <FileInput
+                     state={state}
+                     file={file}
+                     setFile={setFile}></FileInput>
+                  <input
+                     type='submit'
+                     className='form-btn'
+                  />
+               </form>
+               <br />
+               <form className='form'>
+                  <h4>Account Deletion</h4>
+                  <button> Delete Account</button>
                </form>
             </div>
          </div>
