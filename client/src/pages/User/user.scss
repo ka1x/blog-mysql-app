@@ -39,6 +39,7 @@
    }
 
    .user-content {
+      animation: slideDown 1s ease-in-out;
       display: flex;
       flex-direction: column;
       padding: 2rem 15rem 0 0;
