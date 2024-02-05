@@ -53,12 +53,12 @@
             padding: 0.5rem 1rem;
             border: 1px solid black;
          }
+         .menu-mobile {
+            display: none;
+            pointer-events: none;
+            z-index: -99;
+         }
       }
-   }
-   .menu-mobile {
-      display: none;
-      pointer-events: none;
-      z-index: -99;
    }
 }
 
@@ -126,9 +126,7 @@
 @media screen and (max-width: 450px) {
    .navbar {
       .navbar-content {
-
          .navbar-links {
-
             width: 66%;
          }
       }

@@ -53,11 +53,6 @@ const Navbar = () => {
 
                <div className='navbar-right'>
                   {!openMenu && (
-                     // <div className='menu-mobile'>
-                     //    <i
-                     //       className='ri-menu-fill'
-                     //       onClick={() => setOpenMenu(true)}></i>
-                     // </div>
                      <img
                         src='/menu-svgrepo-com.png'
                         alt='Menu Categories'
@@ -68,19 +63,19 @@ const Navbar = () => {
                   )}
                   {currentUser ? (
                      <>
-                     <div >
-
-                        <Link
-                           className='link'
-                           to='/create' style={{marginRight:10}}>
-                           <i className='i-loggedin ri-pen-nib-line'></i>
-                        </Link>
-                        <Link
-                           className='link'
-                           to={`/user/${currentUser.id}`}>
-                           {/* Create */}
-                           <i className='i-loggedin ri-user-3-line'></i>
-                        </Link>
+                        <div>
+                           <Link
+                              className='link'
+                              to='/create'
+                              style={{marginRight: 10}}>
+                              <i className='i-loggedin ri-pen-nib-line'></i>
+                           </Link>
+                           <Link
+                              className='link'
+                              to={`/user/${currentUser.id}`}>
+                              {/* Create */}
+                              <i className='i-loggedin ri-user-3-line'></i>
+                           </Link>
                         </div>
 
                         <Link

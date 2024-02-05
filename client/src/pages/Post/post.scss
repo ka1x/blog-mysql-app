@@ -6,16 +6,14 @@
 
    .content {
       height: 100%;
-      &.fade-in {
-         animation: slideDown 1.2s;
-      }
+      animation: slideDown 1.5s;
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
       width: 75%;
       margin: auto;
       padding: 1rem 0;
-
+      
       .edit {
          display: flex;
          justify-content: flex-end;

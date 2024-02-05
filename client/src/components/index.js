@@ -7,6 +7,7 @@ import SubscribeBar from './SubscribeBar/SubscribeBar'
 import UserBar from './UserBar/UserBar'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
+
 export {
   Navbar,
   Footer,

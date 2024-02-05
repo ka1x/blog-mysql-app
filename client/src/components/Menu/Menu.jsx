@@ -47,6 +47,7 @@ const Menu = ({cat, postId}) => {
                      className='link'
                      to={`/post/${post.id}`}
                      onClick={handleLinkClick}>
+                     {' '}
                      <div className='btn-container'>
                         <button>Read More</button>
                      </div>

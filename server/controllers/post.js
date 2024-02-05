@@ -4,13 +4,15 @@ import fs from 'fs'
 
 export const getPosts = (req, res) => {
   const q = req.query.cat
-    ? `SELECT p.id, p.title, p.desc, p.img, p.cat, p.date, p.uid as userId, u.img AS userImg, u.firstname, u.lastname
+    ? `SELECT p.id, p.title, p.desc, p.img, p.cat, p.date, u.img AS userImg, u.firstname, u.lastname
 		FROM posts p
 		JOIN users u ON p.uid = u.id
-		WHERE p.cat = ?`
-    : `SELECT p.id, p.title, p.desc, p.img, p.cat, p.date, p.uid as userId, u.img AS userImg, u.firstname, u.lastname
+		WHERE p.cat = ?
+    order by date desc`
+    : `SELECT p.id, p.title, p.desc, p.img, p.cat, p.date, u.img AS userImg, u.firstname, u.lastname
 		FROM posts p
-		JOIN users u ON p.uid = u.id`
+		JOIN users u ON p.uid = u.id
+    order by date desc`
 
   db.query(q, [req.query.cat], (err, data) => {
     if (err) return res.status(500).send(err)
@@ -20,7 +22,7 @@ export const getPosts = (req, res) => {
 }
 export const getPost = (req, res) => {
   const q =
-    'SELECT p.id, `firstname`, `lastname`, `username`, `title`, `desc`, p.img, u.img AS userImg, p.uid as userId, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? '
+    'SELECT p.id, `firstname`, `lastname`, `username`, `title`, `desc`, p.img, u.img AS userImg, `cat`,`date` FROM users u JOIN posts p ON u.id = p.uid WHERE p.id = ? '
 
   db.query(q, [req.params.id], (err, data) => {
     if (err) return res.status(500).json(err)

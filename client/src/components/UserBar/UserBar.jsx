@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './userbar.scss';
 import {format} from 'date-fns';
 import {Link} from 'react-router-dom';
@@ -22,13 +22,12 @@ const UserBar = ({data}) => {
       }
    };
 
-
    return (
       <div className='user'>
          <Link to={`/user/${data.userId}`}>
             <div className='user-pfp'>
                <img
-                  src={data.userImg ? data.userImg : '/user-circle-svgrepo-com.png'}
+                  src={data.userImg ? `/uploads/${data.userImg}` : '/user-circle-svgrepo-com.png'}
                   alt=''
                />
             </div>
