@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import '../Login/login.scss';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import {GoBack} from '../../components';
 
 const Register = () => {
    //states//
@@ -34,6 +35,7 @@ const Register = () => {
    return (
       <div>
          <div className='login-page-container'>
+            <GoBack />
             <div className='form-container'>
                <>
                   <form

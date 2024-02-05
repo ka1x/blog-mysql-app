@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './login.scss';
 import {Link, useNavigate} from 'react-router-dom';
 import {useAuth} from '../../context/AuthContext';
+import {GoBack} from '../../components';
 
 const Login = () => {
    //states//
@@ -35,6 +36,7 @@ const Login = () => {
    return (
       <div>
          <div className='login-page-container'>
+         <GoBack/>
             <div className='form-container'>
                <>
                   <form

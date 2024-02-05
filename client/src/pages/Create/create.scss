@@ -32,27 +32,9 @@
             display: flex;
             gap: 1rem;
          }
-
       }
       .buttons {
          width: 100%;
-         .file-container {
-            width: 100%;
-            .file-temp {
-               width: 100%;
-               display: flex;
-               flex-direction: column;
-               justify-content: center;
-               p {
-                  font-size: 0.9em;
-               }
-               .file-clear {
-                  display: flex;
-                  justify-content: end;
-                  padding: 0.5rem 0.5rem 0 0;
-               }
-            }
-         }
       }
       button {
          background: none;

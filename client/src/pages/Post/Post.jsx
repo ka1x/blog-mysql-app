@@ -12,6 +12,7 @@ const Post = () => {
    const postId = location.pathname.split('/')[2];
 
    const [loading, setLoading] = useState(true);
+   const [animate, setAnimate] = useState(false);
 
    const navigate = useNavigate();
    const {currentUser} = useAuth();
@@ -29,7 +30,18 @@ const Post = () => {
       };
       fetchData();
       setLoading(false);
+      setAnimate(true);
    }, [postId]);
+
+   // Reset animate state after the animation completes
+   useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        setAnimate(false);
+      }, 800); // Slightly shorter timeout than aimation duration
+  
+      return () => clearTimeout(timeoutId);
+    }, [postId]);
+  
 
    const handleCancel = () => {
       setShowAlert(false);
@@ -62,7 +74,7 @@ const Post = () => {
             <>
                <Navbar></Navbar>
                <div className='post-container'>
-                  <div className='content'>
+                  <div className={`content ${animate ? 'fade-in' : ''}`}>
                      <h1>{post.title}</h1>
 
                      <UserBar data={post}></UserBar>
@@ -94,7 +106,10 @@ const Post = () => {
                         <></>
                      )}
                   </div>
-                  <Menu cat={post?.cat} postId={post.id}/>
+                  <Menu
+                     cat={post?.cat}
+                     postId={post.id}
+                  />
                   {showAlert && (
                      <AlertPopup
                         message='Confirm delete?'
