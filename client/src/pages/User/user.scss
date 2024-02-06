@@ -1,6 +1,7 @@
 .profile-container {
    display: grid;
    grid-template-columns: 1fr 2fr;
+   
 
    .sidebar {
       display: flex;
@@ -44,8 +45,7 @@
       flex-direction: column;
       padding: 2rem 15rem 0 0;
       grid-column: 2/-2;
-      min-height: 100vh;
-
+      min-height: 80vh;
       .page-title {
          // font-family: 'Bacasime Antique', serif;
          font-size: 2.4rem;
@@ -121,6 +121,7 @@
       }
       .user-content {
          padding: 0;
+         min-height: unset;
 
          .page-title{
             font-size: 1.5rem;
