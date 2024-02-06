@@ -22,7 +22,7 @@ const Options = () => {
    const [file, setFile] = useState(null);
    const state = useLocation().state;
    const navigate = useNavigate();
-   const {logout} = useAuth();
+   const {logout, authToken} = useAuth();
 
    //password change//
    const handlePasswordSubmit = async (e) => {
@@ -30,7 +30,11 @@ const Options = () => {
       setSuccess(null);
       setError(null);
       try {
-         const response = await axios.put(`/user/${currentUser.id}/password`, inputs, {});
+         const response = await axios.put(`/user/${currentUser.id}/password`, inputs, {
+            headers: {
+               Authorization: `Bearer ${authToken}`,
+            },
+         });
          setSuccess(response?.data);
          setShowMessage(true);
       } catch (error) {
@@ -70,9 +74,17 @@ const Options = () => {
       e.preventDefault();
       const image = await upload();
       try {
-         await axios.put(`/user/${state.id}/photo`, {
-            img: file ? image : `${state?.img}`,
-         });
+         await axios.put(
+            `/user/${state.id}/photo`,
+            {
+               img: file ? image : `${state?.img}`,
+            },
+            {
+               headers: {
+                  Authorization: `Bearer ${authToken}`,
+               },
+            }
+         );
          navigate(`/user/${currentUser.id}`);
       } catch (error) {
          setError(error.response.data);
@@ -89,9 +101,13 @@ const Options = () => {
    };
    const handleUserDelete = async () => {
       try {
-         await axios.delete(`/user/${currentUser.id}`);
+         await axios.delete(`/user/${currentUser.id}`, {
+            headers: {
+               Authorization: `Bearer ${authToken}`,
+            },
+         });
          await logout();
-         await navigate('/');
+         navigate('/');
       } catch (error) {
          console.log(error);
       } finally {

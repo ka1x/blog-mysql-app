@@ -15,7 +15,7 @@ const Post = () => {
    const [animate, setAnimate] = useState(false);
 
    const navigate = useNavigate();
-   const {currentUser} = useAuth();
+   const {currentUser, authToken} = useAuth();
 
    const [showAlert, setShowAlert] = useState(false);
 
@@ -53,7 +53,11 @@ const Post = () => {
    //event handlers//
    const handleDelete = async () => {
       try {
-         await axios.delete(`/posts/${postId}`);
+         await axios.delete(`/posts/${postId}`, {
+            headers: {
+               Authorization: `Bearer ${authToken}`,
+            },
+         });
          navigate('/');
       } catch (err) {
          console.log(err);
