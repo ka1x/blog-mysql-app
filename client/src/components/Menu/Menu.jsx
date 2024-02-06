@@ -45,7 +45,7 @@ const Menu = ({cat, postId}) => {
                key={post.id}>
                <div className='img-container'>
                   <img
-                     src={post.img ? `/uploads/${post.img}` : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'}
+                     src={post.img ? `https://ka1tstorageaccpunt.blob.core.windows.net/photos/${post.img}` : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'}
                      alt=''
                   />
                </div>

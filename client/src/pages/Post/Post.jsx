@@ -89,7 +89,7 @@ const Post = () => {
                               <div className='img-container'>
                                  <img
                                     className='post-img'
-                                    src={`/uploads/${post?.img}`}
+                                    src={`https://ka1tstorageaccpunt.blob.core.windows.net/photos/${post?.img}`}
                                     alt=''
                                  />
                               </div>

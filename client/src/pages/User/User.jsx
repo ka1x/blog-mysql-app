@@ -55,7 +55,7 @@ const User = () => {
                         <h3>Profile</h3>
                         <div className='user-pfp'>
                            <img
-                              src={user?.img == null || user?.img == '' ? '/user-circle-svgrepo-com.png' : `/uploads/${user?.img}`}
+                              src={user?.img == null || user?.img == '' ? '/user-circle-svgrepo-com.png' : `https://ka1tstorageaccpunt.blob.core.windows.net/photos/${user?.img}`}
                               alt=''
                            />
                         </div>
@@ -86,7 +86,7 @@ const User = () => {
                                        key={i}>
                                        <div className='img'>
                                           <img
-                                             src={post.img ? `/uploads/${post.img}` : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'}
+                                             src={post.img ? `https://ka1tstorageaccpunt.blob.core.windows.net/photos/${post.img}` : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'}
                                              alt=''
                                           />
                                        </div>

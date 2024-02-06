@@ -26,7 +26,7 @@ const UserBar = ({data}) => {
          <Link to={`/user/${data.userId}`}>
             <div className='user-pfp'>
                <img
-                  src={data.userImg ? `/uploads/${data.userImg}` : '/user-circle-svgrepo-com.png'}
+                  src={data.userImg ? `https://ka1tstorageaccpunt.blob.core.windows.net/photos/${data.userImg}` : '/user-circle-svgrepo-com.png'}
                   alt=''
                />
             </div>
