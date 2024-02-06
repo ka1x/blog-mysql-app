@@ -1,6 +1,7 @@
 {
   "name": "blog-mysql-app",
-  "private": true,
+  "private": false,
+  "homepage": "https://mysql-blog.up.railway.app/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
