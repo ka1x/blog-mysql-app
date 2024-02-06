@@ -5,4 +5,5 @@ export const db = mysql.createConnection({
    user: 'root',
    password: '6AebcBddfD3fEafbgDAAgEfGFee153CB',
    database: 'railway',
+   port : '25634',
 });
