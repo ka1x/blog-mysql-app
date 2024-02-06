@@ -1,0 +1,25 @@
+.popup {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: white;
+   box-shadow: 0px 5px 15px 2px #00000026;
+   padding: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 10px;
+   width: 30%;
+   height: 10%;
+   opacity: 0;
+   transition: 0.5s opacity;
+   pointer-events: none;
+	
+   &.popup-visible {
+      transition: 0.2s opacity;
+      opacity: 1;
+      pointer-events: all;
+      z-index: 10;
+   }
+}

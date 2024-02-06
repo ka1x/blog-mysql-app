@@ -3,11 +3,11 @@ import FileInput from './FileInput/FileInput'
 import GoBack from './GoBack/GoBack'
 import Loading from './Loading/Loading'
 import Menu from './Menu/Menu'
+import PopupMessage from './PopupMessage/PopupMessage'
 import SubscribeBar from './SubscribeBar/SubscribeBar'
 import UserBar from './UserBar/UserBar'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
-
 export {
   Navbar,
   Footer,
@@ -17,5 +17,7 @@ export {
   AlertPopup,
   Loading,
   FileInput,
-  GoBack
+  GoBack,
+  PopupMessage
+
 }

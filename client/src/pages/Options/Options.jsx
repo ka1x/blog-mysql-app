@@ -1,8 +1,8 @@
 import {useAuth} from '../../context/AuthContext';
 import './options.scss';
 import '../Login/login.scss';
-import React, {useState} from 'react';
-import {AlertPopup, FileInput, GoBack} from '../../components';
+import React, {useState, useEffect} from 'react';
+import {AlertPopup, FileInput, GoBack, PopupMessage} from '../../components';
 import {useLocation, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
@@ -15,7 +15,9 @@ const Options = () => {
 
    const [showAlert, setShowAlert] = useState(false);
    const [error, setError] = useState(null);
+
    const [success, setSuccess] = useState(null);
+   const [showMessage, setShowMessage] = useState(false);
 
    const [file, setFile] = useState(null);
    const state = useLocation().state;
@@ -25,18 +27,30 @@ const Options = () => {
    //password change//
    const handlePasswordSubmit = async (e) => {
       e.preventDefault();
-
-      setSuccess(null)
+      setSuccess(null);
       setError(null);
-
       try {
          const response = await axios.put(`/user/${currentUser.id}/password`, inputs, {});
          setSuccess(response?.data);
+         setShowMessage(true);
       } catch (error) {
          console.error('Error setting new password:', error.response?.data || error.message);
          setError(error.response?.data || error.message); // Set an error state or handle the error accordingly
       }
    };
+   //message window time shown
+   useEffect(() => {
+      if (showMessage) {
+         const timer = setTimeout(() => {
+            setShowMessage(false);
+         }, 1500);
+
+         return () => {
+            clearTimeout(timer);
+         };
+      }
+   }, [showMessage]);
+
    const handleChange = (e) => {
       setInputs((prev) => ({...prev, [e.target.name]: e.target.value}));
    };
@@ -87,6 +101,11 @@ const Options = () => {
    return (
       <>
          <div className='options-page-container'>
+            <PopupMessage
+               message={success}
+               isVisible={showMessage}
+               setIsVisible={setShowMessage}
+            />
             <GoBack />
             <div className='form-container'>
                <h3>Options</h3>
@@ -115,7 +134,7 @@ const Options = () => {
                      className='form-btn'
                   />
                   {error && <p className='error'>{error}</p>}
-                  {success && <p className='good err'>{success}</p>}
+                  {/* {success && <p className='good err'>{success}</p>} */}
                </form>
                <br />
 
