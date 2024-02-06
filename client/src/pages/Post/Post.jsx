@@ -37,7 +37,7 @@ const Post = () => {
    useEffect(() => {
       const timeoutId = setTimeout(() => {
          setAnimate(false);
-      }, 800); // Slightly shorter timeout than aimation duration
+      }, 800);
 
       return () => clearTimeout(timeoutId);
    }, [postId]);

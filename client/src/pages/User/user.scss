@@ -1,7 +1,7 @@
+@import '../../styles/mixins.scss';
 .profile-container {
    display: grid;
    grid-template-columns: 1fr 2fr;
-   
 
    .sidebar {
       display: flex;
@@ -32,10 +32,7 @@
          }
       }
       .options-btn {
-         padding: 0.5rem 1rem;
-         border: 1px solid black;
-         background: transparent;
-         cursor: pointer;
+         @include buttonStyle();
       }
    }
 
@@ -46,6 +43,7 @@
       padding: 2rem 15rem 0 0;
       grid-column: 2/-2;
       min-height: 80vh;
+
       .page-title {
          // font-family: 'Bacasime Antique', serif;
          font-size: 2.4rem;
@@ -98,8 +96,6 @@
    }
 }
 
-
-
 @media (max-width: 768px) {
    .profile-container {
       display: flex;
@@ -114,7 +110,7 @@
          h3 {
             display: none;
          }
-         .user-pfp img{
+         .user-pfp img {
             width: 100px;
             height: 100px;
          }
@@ -123,13 +119,13 @@
          padding: 0;
          min-height: unset;
 
-         .page-title{
+         .page-title {
             font-size: 1.5rem;
             text-align: center;
          }
          .posts {
             padding: 1rem 2rem;
-            .post{
+            .post {
                grid-template-columns: unset;
             }
          }

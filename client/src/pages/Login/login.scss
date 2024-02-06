@@ -14,7 +14,7 @@
       border-radius: 1rem;
       padding: 2rem 1rem;
       animation: slideDown 1s;
-      
+
       .login-form {
          @include flexCenter();
          flex-direction: column;
@@ -54,17 +54,15 @@
          }
 
          .form-btn {
-            width: 100%;
-            padding: 0.5rem 1rem;
-            border: 1px solid black;
-            background: transparent;
+            @include buttonStyle();
          }
 
          .error {
             font-size: 0.8rem;
             color: red;
             text-transform: uppercase;
-         }    .success {
+         }
+         .success {
             font-size: 0.8rem;
             color: black;
             text-transform: uppercase;

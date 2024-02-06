@@ -55,11 +55,7 @@
          }
 
          .form-btn {
-            width: 100%;
-            padding: 0.5rem 1rem;
-            border: 1px solid black;
-            background: transparent;
-            cursor: pointer;
+            @include buttonStyle();
          }
 
          .error {
@@ -69,21 +65,15 @@
          }
       }
       button {
-         width: 100%;
-         padding: 0.5rem 1rem;
-         border: 1px solid black;
-         background: transparent;
-         cursor: pointer;
+         @include buttonStyle();
       }
    }
 }
 
 @media (max-width: 951px) {
    .options-page-container {
-   
       .form-container {
-        
-         max-width: unset
+         max-width: unset;
       }
    }
 }

@@ -1,9 +1,10 @@
+@import '../../styles/mixins.scss';
 .file-container {
    width: 100%;
-	display: flex;
-	// flex-direction: column;
+   display: flex;
+   // flex-direction: column;
    gap: 10px;
-	.file-temp {
+   .file-temp {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -18,12 +19,6 @@
       }
    }
    button {
-      background: none;
-      outline: none;
-      border: 1px solid black;
-      padding: 0.5rem 1rem;
-      width: 100%;
-      cursor: pointer;
-      margin: 0.5rem 0;
+      @include buttonStyle();
    }
 }

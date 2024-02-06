@@ -34,7 +34,6 @@ a:focus {
 .app {
    min-height: 100vh;
    display: flex;
-   /* justify-content: space-between; */
    flex-direction: column;
    background: var(--background-col);
    color: var(--main-col);

@@ -4,49 +4,12 @@
    justify-content: center;
 }
 
-@mixin formStyle() {
-   @include flexCenter();
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-
-   form {
-      @include flexCenter();
-      flex-direction: column;
-      gap: 1rem;
-      > input {
-         width: 100%;
-      }
-
-      > div {
-         @include flexCenter();
-         gap: 1rem;
-			width: 100%;
-      }
-
-      h3 {
-         margin: 0.3rem 0 1.3rem 0;
-      }
-
-      span {
-         font-size: 0.9rem;
-         margin: 0.5rem 0 0 0;
-      }
-
-      input {
-         border: none;
-         outline: none;
-         background-color: var(--inputColor);
-         border-radius: 8px;
-         padding: 0.6rem;
-         flex: 1;
-      }
-
-      button {
-         padding: 0.5rem 1rem;
-         width: 100%;
-      }
-   }
+@mixin buttonStyle() {
+   background: none;
+   outline: none;
+   border: 1px solid black;
+   padding: 0.5rem 1rem;
+   width: 100%;
+   cursor: pointer;
+   margin: 0.5rem 0;
 }

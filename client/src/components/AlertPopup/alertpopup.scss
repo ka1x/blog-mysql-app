@@ -1,11 +1,13 @@
+@import '../../styles/mixins.scss';
+
 .confirm-popup {
    position: fixed;
    top: 0;
    left: 0;
    width: 100%;
    height: 100%;
-	display: flex;
-	justify-content: center;
+   display: flex;
+   justify-content: center;
 
    .overlay {
       background: rgba($color: #1b0332, $alpha: 0.25);
@@ -24,16 +26,13 @@
       padding: 2rem 3rem;
       z-index: 50;
       border-radius: 4px;
-		top: 50%;
-		display: flex;
-		justify-content: center;
-		gap: 1rem;
-		flex-direction: column;
+      top: 50%;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-direction: column;
       button {
-         width: 100%;
-         padding: 0.5rem 1rem;
-         border: 1px solid black;
-         background: transparent;
+         @include buttonStyle();
       }
    }
 
@@ -47,18 +46,18 @@
    }
 }
 
-@media (min-width: 760px){
-	.popup{
-		.popup-content{
-			width: 30%;
-		}
-	}	
+@media (min-width: 760px) {
+   .popup {
+      .popup-content {
+         width: 30%;
+      }
+   }
 }
 
-@media (max-width: 376px){
-   .popup{
-		.popup-content{
-			width: 80%;
-		}
-	}	
+@media (max-width: 376px) {
+   .popup {
+      .popup-content {
+         width: 80%;
+      }
+   }
 }
