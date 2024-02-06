@@ -1,5 +1,5 @@
 import React, {useState, useRef} from 'react';
-import './fileinput.scss'
+import './fileinput.scss';
 
 const FileInput = ({file, setFile, state}) => {
    const [fileName, setFileName] = useState('');
@@ -13,8 +13,18 @@ const FileInput = ({file, setFile, state}) => {
    };
    const handleSetFile = () => {
       const selectedFile = fileInputRef.current.files[0];
-      setFile(selectedFile);
-      setFileName(selectedFile.name);
+      if (selectedFile) {
+         const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+         if (allowedTypes.includes(selectedFile.type)) {
+            setFile(selectedFile);
+            setFileName(selectedFile.name);
+         } else {
+            alert('Please choose a valid .jpeg, .jpg, or .png file.');
+            fileInputRef.current.value = null;
+            setFile(null);
+            setFileName('');
+         }
+      }
    };
 
    const handleClearFile = () => {
