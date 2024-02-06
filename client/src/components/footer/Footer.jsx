@@ -1,19 +1,20 @@
 import React from 'react';
 import './footer.scss';
+import {scrollToTop} from '../../utils/scrollToTop';
 
 const Footer = ({page, setPage, maxPage}) => {
    const handleLeft = () => {
       if (page > 0) {
          setPage(page - 1);
+         scrollToTop();
       }
-
    };
 
    const handleRight = () => {
       if (page < maxPage) {
          setPage(page + 1);
+         scrollToTop();
       }
-
    };
 
    return (
