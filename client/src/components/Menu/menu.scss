@@ -7,6 +7,10 @@
    gap: 2rem;
    z-index: 0;
 
+   &.animate{
+      animation: slideDown 2s;
+   }
+
    h1 {
       font-size: 1rem;
       text-align: left;

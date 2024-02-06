@@ -40,7 +40,7 @@ const Home = () => {
       setLoading(true);
 
       // After the animation duration, reset the animate state
-      const animationDuration = 200;
+      const animationDuration = 500;
       const timeoutId = setTimeout(() => {
          setLoading(false);
          setAnimate(false);

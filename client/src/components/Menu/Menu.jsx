@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const Menu = ({cat, postId}) => {
    const [posts, setPosts] = useState([]);
+   const [animate, setAnimate] = useState(false);
 
    useEffect(() => {
       const fetchPosts = async () => {
@@ -20,6 +21,13 @@ const Menu = ({cat, postId}) => {
          }
       };
       fetchPosts();
+      setAnimate(true);
+
+      const animationDuration = 1500;
+      const timeoutId = setTimeout(() => {
+         setAnimate(false);
+      }, animationDuration);
+      return () => clearTimeout(timeoutId);
    }, [cat, postId]);
 
    const handleLinkClick = () => {
@@ -29,7 +37,7 @@ const Menu = ({cat, postId}) => {
    };
 
    return (
-      <div className='menu'>
+      <div className={`menu ${animate ? 'animate' : ''}`}>
          <h1>Other posts you may like</h1>
          {posts.slice(0, 4).map((post) => (
             <div
