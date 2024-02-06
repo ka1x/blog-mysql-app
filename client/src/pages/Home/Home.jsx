@@ -77,7 +77,7 @@ const Home = () => {
                            <Link to={`/post/${post.id}`}>
                               <div className='text'>
                                  <h3>{getText(post?.title, 7)}</h3>
-                                 <p className='desc'>{getText(post?.desc, 100)}</p>
+                                 <p className='desc'>{getText(post?.desc, 50)}</p>
                               </div>
                            </Link>
                            <UserBar data={post} />

@@ -5,7 +5,6 @@
    @include flexCenter();
    padding: 2rem 10rem 1rem 10em;
 
-
    .home-posts.active {
       animation: slideDown 1s ease;
    }
@@ -51,6 +50,8 @@
                margin: 0.5rem 0;
                display: block;
                font-size: 0.8rem;
+               text-align: justify;
+               padding: 0.5rem 1rem 0 0;
             }
          }
       }
@@ -58,7 +59,7 @@
       .img {
          position: relative;
          width: 100%;
-         padding-bottom: 100%; 
+         padding-bottom: 100%;
          img {
             position: absolute;
             width: 100%;
@@ -70,13 +71,15 @@
       .post:not(:nth-of-type(1)) {
          height: 100%;
          position: relative;
+         display: flex;
+         flex-direction: column;
 
          .content {
-            height: 25%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: .5rem 0 0 0;
+            padding: 0.5rem 0 0 0;
             h3 {
                font-family: 'Bacasime Antique', serif;
                font-size: 1.3rem;

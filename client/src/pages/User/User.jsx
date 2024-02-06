@@ -93,7 +93,7 @@ const User = () => {
                                        <div className='content'>
                                           <div className='text'>
                                              <h3>{post?.title}</h3>
-                                             <p className='desc'>{getText(post?.desc, 50)}</p>
+                                             <p className='desc'>{getText(post?.desc, 30)}</p>
                                           </div>
                                        </div>
                                     </Link>
