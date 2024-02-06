@@ -2,10 +2,8 @@ import React from 'react';
 import './alertpopup.scss';
 
 const AlertPopup = ({message, onConfirm, onCancel, showCancel}) => {
-   // console.log(showCancel);
-
    return (
-      <div className='popup'>
+      <div className='confirm-popup'>
          <div className='overlay'></div>
          <div className='popup-content'>
             <p>{message}</p>
