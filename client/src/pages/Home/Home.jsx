@@ -50,10 +50,6 @@ const Home = () => {
       return () => clearTimeout(timeoutId);
    }, [page, category]);
 
-   useEffect(() => {
-      console.log(posts);
-   }, [posts]);
-
    const renderPosts = () => {
       return (
          <>

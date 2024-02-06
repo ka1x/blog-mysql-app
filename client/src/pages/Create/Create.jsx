@@ -7,6 +7,7 @@ import './create.scss';
 import axios from 'axios';
 import {useLocation, useNavigate} from 'react-router-dom';
 import moment from 'moment';
+import {useAuth} from '../../context/AuthContext.jsx';
 
 const Create = () => {
    //states//
@@ -15,6 +16,8 @@ const Create = () => {
    const [title, setTitle] = useState(state?.title || '');
    const [cat, setCat] = useState(state?.cat || '');
    const [file, setFile] = useState(null);
+
+   const {authToken} = useAuth();
 
    const navigate = useNavigate();
 
@@ -43,20 +46,36 @@ const Create = () => {
          try {
             state
                ? //if editing
-                 await axios.put(`/posts/${state.id}`, {
-                    title,
-                    desc: value,
-                    cat,
-                    img: file ? image : `${state?.img}`,
-                 })
+                 await axios.put(
+                    `/posts/${state.id}`,
+                    {
+                       title,
+                       desc: value,
+                       cat,
+                       img: file ? image : `${state?.img}`,
+                    },
+                    {
+                       headers: {
+                          Authorization: `Bearer ${authToken}`, // Include token in request headers
+                       },
+                    }
+                 )
                : //if posting
-                 await axios.post(`/posts/`, {
-                    title,
-                    desc: value,
-                    cat,
-                    img: file ? image : '',
-                    date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
-                 });
+                 await axios.post(
+                    `/posts/`,
+                    {
+                       title,
+                       desc: value,
+                       cat,
+                       img: file ? image : '',
+                       date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
+                    },
+                    {
+                       headers: {
+                          Authorization: `Bearer ${authToken}`, // Include token in request headers
+                       },
+                    }
+                 );
             navigate('/');
          } catch (err) {
             console.log(err);
