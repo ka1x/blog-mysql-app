@@ -1,4 +1,5 @@
 import AlertPopup from './AlertPopup/AlertPopup'
+import EmptyPageMsg from './EmptyPageMsg/EmptyPageMsg'
 import FileInput from './FileInput/FileInput'
 import GoBack from './GoBack/GoBack'
 import Loading from './Loading/Loading'
@@ -18,6 +19,7 @@ export {
   Loading,
   FileInput,
   GoBack,
-  PopupMessage
+  PopupMessage,
+  EmptyPageMsg
 
 }

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Footer, Loading, Navbar, UserBar} from '../../components';
+import {EmptyPageMsg, Footer, Loading, Navbar, UserBar} from '../../components';
 // import {posts} from '../../data/index.js';
 import {Link, useLocation} from 'react-router-dom';
 import './home.scss';
@@ -50,6 +50,10 @@ const Home = () => {
       return () => clearTimeout(timeoutId);
    }, [page, category]);
 
+   useEffect(() => {
+      console.log(posts);
+   }, [posts]);
+
    const renderPosts = () => {
       return (
          <>
@@ -89,7 +93,7 @@ const Home = () => {
    return (
       <>
          <Navbar />
-         <div className='home-container'>{renderPosts()}</div>
+         {posts.length != 0 ? <div className='home-container'>{renderPosts()}</div> : <EmptyPageMsg message={'No posts found'} />}
          <Footer
             page={page}
             setPage={setPage}

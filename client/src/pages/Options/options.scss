@@ -8,7 +8,6 @@
    gap: 4rem;
    position: relative;
 
-
    .form-container {
       background-color: var(--cardColor);
       border-radius: 1rem;
@@ -75,7 +74,16 @@
          border: 1px solid black;
          background: transparent;
          cursor: pointer;
+      }
+   }
+}
 
+@media (max-width: 951px) {
+   .options-page-container {
+   
+      .form-container {
+        
+         max-width: unset
       }
    }
 }
