@@ -2,29 +2,41 @@ import express from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import multer from 'multer'
+import { MulterAzureStorage } from 'multer-azure-blob-storage'
 
 const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({ credentials: true, origin: true }))
 
-//multer for file upload
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '../client/public/uploads')
-  },
-  filename: function (req, file, cb) {
+const azureStorage = new MulterAzureStorage({
+  connectionString:
+    '***REMOVED***',
+  accessKey:
+    '***REMOVED***',
+  accountName: 'ka1tstorageaccpunt',
+  containerName: 'photos',
+  blobName: (req, file) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
     const fileName = file.fieldname + '-' + uniqueSuffix + '.jpg'
-    console.log('Generated file name:', fileName) // Logging the generated file name
-    cb(null, fileName)
-  }
+    // console.log('Generated file name:', fileName) // Logging the generated file name
+    return fileName
+  },
+  contentSettings: (req, file) => {
+    // Define content settings here if needed
+    return { contentType: 'image/jpeg' }
+  },
+  containerAccessLevel: 'blob',
+  urlExpirationTime: 60
 })
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: azureStorage })
 app.post('/api/upload', upload.single('file'), function (req, res) {
   const file = req.file
-  res.status(200).json(file.filename)
+  if (!file) {
+    return res.status(400).json({ error: 'No file uploaded' })
+  }
+  res.status(200).json(file.blobName)
 })
 
 //routes import//

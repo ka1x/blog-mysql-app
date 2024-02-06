@@ -16,11 +16,8 @@ const Create = () => {
    const [title, setTitle] = useState(state?.title || '');
    const [cat, setCat] = useState(state?.cat || categories[0].linkname);
    const [file, setFile] = useState(null);
-
    const {authToken} = useAuth();
-
    const navigate = useNavigate();
-
    const [openPopup, setOpenPopup] = useState(false);
 
    const upload = async () => {
