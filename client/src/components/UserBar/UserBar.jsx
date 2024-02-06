@@ -12,7 +12,6 @@ const UserBar = ({data}) => {
          const month = parseInt(sqlDatetime.substring(5, 7), 10) - 1; // Month is 0-indexed
          const day = parseInt(sqlDatetime.substring(8, 10), 10);
 
-         // Create a JavaScript Date object
          const jsDate = new Date(year, month, day);
 
          // Format the date as "Month Day Year" (e.g., "June 21 2023")
@@ -38,7 +37,7 @@ const UserBar = ({data}) => {
          </Link>
 
          <div className='share'>
-            <span>1k shares</span>
+            {/* <span>1k shares</span> */}
             <i className='ri-facebook-fill'></i>
             <i className='ri-twitter-fill'></i>
             <i className='ri-pinterest-fill'></i>
