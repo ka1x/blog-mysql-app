@@ -1,8 +1,8 @@
-import mysql from 'mysql2'
+import mysql from 'mysql2';
 
 export const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'blog'
-})
+   host: 'monorail.proxy.rlwy.net',
+   user: 'root',
+   password: '***REMOVED***',
+   database: 'railway',
+});
