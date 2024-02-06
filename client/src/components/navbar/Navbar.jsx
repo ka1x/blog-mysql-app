@@ -52,20 +52,15 @@ const Navbar = () => {
                </div>
 
                <div className='navbar-right'>
-                  {!openMenu && (
-                     // <div className='menu-mobile'>
-                     //    <i
-                     //       className='ri-menu-fill'
-                     //       onClick={() => setOpenMenu(true)}></i>
-                     // </div>
+                  {/* {!openMenu && ( */}
                      <img
                         src='/menu-svgrepo-com.png'
                         alt='Menu Categories'
-                        className='menu-mobile'
+                        className={`menu-mobile ${openMenu ? 'hidden-menu' : ''}`}
                         onClick={() => setOpenMenu(true)}
                         style={{height: 22, width: 22}}
                      />
-                  )}
+                  {/* )} */}
                   {currentUser ? (
                      <>
                         <div>

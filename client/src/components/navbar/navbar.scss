@@ -115,9 +115,16 @@
       .menu-mobile {
          display: block;
          pointer-events: all;
-         z-index: 99;
+         z-index: 1;
+         opacity: 1;
+         transition: 1s all;
          i {
             font-size: 1.3rem;
+         }
+
+         &.hidden-menu {
+            opacity: 0;
+            transition: 0.5s all;
          }
       }
    }
@@ -126,9 +133,7 @@
 @media screen and (max-width: 450px) {
    .navbar {
       .navbar-content {
-
          .navbar-links {
-
             width: 66%;
          }
       }
