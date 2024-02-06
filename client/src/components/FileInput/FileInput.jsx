@@ -1,9 +1,10 @@
 import React, {useState, useRef} from 'react';
 import './fileinput.scss';
+import AlertPopup from '../AlertPopup/AlertPopup';
 
 const FileInput = ({file, setFile, state}) => {
    const [fileName, setFileName] = useState('');
-
+   const [openPopup, setOpenPopup] = useState(false);
    const fileInputRef = useRef(null);
 
    const handleFileUploadClick = () => {
@@ -11,6 +12,11 @@ const FileInput = ({file, setFile, state}) => {
          fileInputRef.current.click();
       }
    };
+
+   const handleAlertConfirm = () => {
+      setOpenPopup(false);
+   };
+
    const handleSetFile = () => {
       const selectedFile = fileInputRef.current.files[0];
       if (selectedFile) {
@@ -19,7 +25,8 @@ const FileInput = ({file, setFile, state}) => {
             setFile(selectedFile);
             setFileName(selectedFile.name);
          } else {
-            alert('Please choose a valid .jpeg, .jpg, or .png file.');
+            // alert('Please choose a valid .jpeg, .jpg, or .png file.');
+            setOpenPopup(true);
             fileInputRef.current.value = null;
             setFile(null);
             setFileName('');
@@ -66,6 +73,12 @@ const FileInput = ({file, setFile, state}) => {
                </div>
             )}
          </div>
+         {openPopup && (
+            <AlertPopup
+               message='Please choose a valid .jpg, or .png file.'
+               onConfirm={handleAlertConfirm}
+               showCancel={false}></AlertPopup>
+         )}
       </div>
    );
 };
