@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import './menu.scss';
 import axios from 'axios';
+import {scrollToTop} from '../../utils/scrollToTop';
 
 const Menu = ({cat, postId}) => {
    const [posts, setPosts] = useState([]);
@@ -31,9 +32,7 @@ const Menu = ({cat, postId}) => {
    }, [cat, postId]);
 
    const handleLinkClick = () => {
-      // Scroll back to the top of the page
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
+      scrollToTop();
    };
 
    return (
