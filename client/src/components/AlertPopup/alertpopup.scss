@@ -47,7 +47,7 @@
 }
 
 @media (min-width: 760px) {
-   .popup {
+   .confirm-popup {
       .popup-content {
          width: 30%;
       }
@@ -55,7 +55,7 @@
 }
 
 @media (max-width: 376px) {
-   .popup {
+   .confirm-popup {
       .popup-content {
          width: 80%;
       }
