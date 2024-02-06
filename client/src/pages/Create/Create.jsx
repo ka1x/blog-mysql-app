@@ -14,7 +14,7 @@ const Create = () => {
    const state = useLocation().state;
    const [value, setValue] = useState(state?.desc || '');
    const [title, setTitle] = useState(state?.title || '');
-   const [cat, setCat] = useState(state?.cat || '');
+   const [cat, setCat] = useState(state?.cat || categories[0].linkname);
    const [file, setFile] = useState(null);
 
    const {authToken} = useAuth();
