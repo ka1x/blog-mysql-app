@@ -10,13 +10,12 @@ const Home = () => {
    const [posts, setPosts] = useState([]);
    const [page, setPage] = useState(0);
    const [animate, setAnimate] = useState(false);
-
    const [loading, setLoading] = useState(true);
-
+   //calculating amount of posts displayed
    const postsPerPage = 5;
    const startIndex = page * postsPerPage;
    const endIndex = startIndex + postsPerPage;
-   const maxPage = Math.floor(posts.length / postsPerPage) - 1;
+   const maxPage = Math.ceil(posts.length / postsPerPage) - 1;
 
    const category = useLocation().search;
 
