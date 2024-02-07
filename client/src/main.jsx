@@ -6,7 +6,8 @@ import {BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
 import {AuthContextProvider} from './context/AuthContext';
 
-axios.defaults.baseURL = 'https://mysql-server.up.railway.app/api/';
+
+axios.defaults.baseURL = 'http://localhost:8800/api/';
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
