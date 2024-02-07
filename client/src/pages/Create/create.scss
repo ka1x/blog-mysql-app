@@ -5,13 +5,18 @@
    display: grid;
    grid-template-columns: 3fr 1fr;
    gap: 2rem;
+   
 
    .content {
       display: flex;
       gap: 1rem;
       flex-direction: column;
+      width: 100%;
+      overflow: hidden;
       .ql-editor {
          min-height: 50vh;
+         overflow: hidden;
+         word-wrap: break-word;
       }
       .title {
          width: 100%;
