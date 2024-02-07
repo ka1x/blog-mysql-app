@@ -39,15 +39,19 @@
          margin: 1rem 0 0 0;
          font-size: 3rem;
          font-weight: 500;
+         width: 100%;
+         white-space: pre-wrap; /* Allow text to wrap to the next line */
+         word-wrap: break-word;
       }
       .desc-container {
          margin-top: 1.5rem;
          font-size: 0.9rem;
          letter-spacing: 1px;
          text-align: justify;
-         width: 100%;
-         word-wrap: break-word;
          margin-bottom: 2rem;
+         width: 100%;
+         white-space: pre-wrap; /* Allow text to wrap to the next line */
+         word-wrap: break-word;
       }
    }
 }

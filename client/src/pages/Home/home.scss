@@ -45,6 +45,9 @@
                margin: 1rem 0 0 0;
                font-size: 2rem;
                font-weight: 500;
+               width: 100%;
+               white-space: pre-wrap; /* Allow text to wrap to the next line */
+               word-wrap: break-word; /* Break long words if they exceed container width */
             }
             .desc {
                margin: 0.5rem 0;
@@ -52,6 +55,9 @@
                font-size: 0.8rem;
                text-align: justify;
                padding: 0.5rem 1rem 0 0;
+               width: 100%;
+               white-space: pre-wrap; /* Allow text to wrap to the next line */
+               word-wrap: break-word; /* Break long words if they exceed container width */
             }
          }
       }
