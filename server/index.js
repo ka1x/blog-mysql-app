@@ -11,7 +11,7 @@ app.use(cors({ credentials: true, origin: true }))
 
 const azureStorage = new MulterAzureStorage({
   connectionString:
-    '***REMOVED***',
+    '',
   accessKey:
     '4rb/jarkDV8WRuk5A8M+re/IUmjVGqr2kMhh51ngNLd4OLjMDHy1t0CzZTry8Gy5/06mV9vQclZM+ASt2nGytQ==',
   accountName: 'ka1tstorageaccpunt',
