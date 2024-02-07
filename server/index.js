@@ -13,7 +13,7 @@ const azureStorage = new MulterAzureStorage({
   connectionString:
     '',
   accessKey:
-    '4rb/jarkDV8WRuk5A8M+re/IUmjVGqr2kMhh51ngNLd4OLjMDHy1t0CzZTry8Gy5/06mV9vQclZM+ASt2nGytQ==',
+    '',
   accountName: 'ka1tstorageaccpunt',
   containerName: 'photos',
   blobName: (req, file) => {
