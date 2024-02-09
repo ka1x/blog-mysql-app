@@ -50,6 +50,7 @@
 
 ![Screenshot 2024-02-09 at 19-34-55 B L O G](https://github.com/ka1x/blog-mysql-app/assets/104195913/b3423921-9c4c-48fa-b7d2-5236998d8474)
 
+<br/>
 
 ## Key Features
 
