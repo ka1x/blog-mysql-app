@@ -68,5 +68,6 @@ Server uses [mutler](https://www.npmjs.com/package/multer) with [multer azure cl
 ## Credits
 
 Credit to [Once](https://oncetheme.com/) for visual inspiration of the app homepage.
+Credit to [Amit Merchant](https://github.com/amitmerchant1990) for markdown template.
 
 <br/>
