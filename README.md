@@ -1,12 +1,9 @@
 
 <h1 align="center">
   <br>
-  <br>
    B L O G
   <br>
 </h1>
-
-
 
 <h4 align="center">A fullstack blog webapp built with React and Vite with Node.js and Express on the backend.</h4>
 <p  align="center">
