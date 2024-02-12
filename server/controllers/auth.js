@@ -54,7 +54,6 @@ export const login = (req, res) => {
         httpOnly: true,
         sameSite: 'none', // Allow cross-site access, requires secure connection (HTTPS)
         secure: true
-        // sameSite: 'lax',
       })
       .status(200)
       .json(other)

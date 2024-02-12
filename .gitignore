@@ -2,3 +2,4 @@
 *.crt
 *.key
 client/public/uploads/
+.env
