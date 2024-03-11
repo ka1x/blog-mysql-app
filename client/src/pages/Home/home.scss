@@ -140,6 +140,17 @@
       }
    }
 }
+.copyright{
+
+   padding: 0 2rem 1.5rem 2rem;
+   font-size: 0.7rem;
+
+   >a{
+      text-decoration: underline;
+      cursor: pointer;
+   }
+
+}
 
 @media (max-width: 767px) {
    .home-container {

@@ -96,6 +96,9 @@ const Home = () => {
             postsPerPage={postsPerPage}
             maxPage={maxPage}
          />
+            <p className='copyright'>
+            This is an educational project inspired by <a href='https://oncetheme.com/'>Once.</a>
+         </p>
       </>
    );
 };
