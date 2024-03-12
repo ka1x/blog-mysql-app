@@ -4,6 +4,8 @@ import cookieParser from 'cookie-parser'
 import multer from 'multer'
 import { MulterAzureStorage } from 'multer-azure-blob-storage'
 import dotenv from 'dotenv'
+import { db } from './db.js'
+
 
 const app = express()
 app.use(express.json())
@@ -48,6 +50,20 @@ import userRoutes from './routes/users.js'
 app.use('/api/posts/', postRoutes)
 app.use('/api/auth/', authRoutes)
 app.use('/api/user/', userRoutes)
+
+// Function to execute SELECT 1 query periodically to keep the database connection alive
+const keepAlive = () => {
+  db.query('SELECT 1', (err, result) => {
+    if (err) {
+      console.error('Error executing keep-alive query:', err)
+    } else {
+      console.log('Database connection alive.')
+    }
+  })
+}
+
+// Execute keepAlive function every 5 minutes (adjust interval as needed)
+setInterval(keepAlive, 10800000); // 10800000 milliseconds = 3 hours
 
 app.listen(8800, () => {
   console.log('listening')
