@@ -7,7 +7,7 @@
 
 <h4 align="center">A fullstack blog webapp built with React and Vite with Node.js and Express on the backend.</h4>
 <p  align="center">
- <a href="https://mysql-blog.up.railway.app/">
+ <a href="https://mysql-blog.slowiak.org/">
    Website Link
   </a>
 </p>
